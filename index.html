@@ -4,18 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
     <title>Página 1</title>
 </head>
-
-<style>
-
-    button{
-        margin: 5px;
-        width: 5%;
-    }
-</style>
-
 
 <body>
 
@@ -29,108 +22,6 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/scripts.js"></script>
 </body>
 </html>
-
-<script>
-  
-    
-    $("#boton").on("mouseover", function(event){
-       
-        move(this)
-
-    })
-
-    function fade(t){
-        $(t).prop("disabled", true)
-        $(t).fadeOut(500)
-    }
-
-    function propagate(t){
-        $(t).hide()
-
-        const id  = setInterval(interval, 20)
-        let i = 0
-        function interval(){
-            if (i == 100){
-                clearInterval(id)
-            }
-            else{
-                i++
-                let elem = $('<button id="otro" class="btn btn-primary">SI</button>')
-                $("#div").append(elem)
-                move(elem)
-            }
-        }
-    }
-
-    function size(t){
-
-        let elem = $(t)
-        const id  = setInterval(interval, 20)
-        let i = 0
-        function interval(){
-            if (i == 17){
-                clearInterval(id)
-                elem.hide()
-            }
-            else{
-                i++
-                let width = elem.css("width")
-                let height = elem.css("height")
-
-                let x = Number(width.slice(0, width.length - 2)) - 2
-                let y = Number(height.slice(0, height.length - 2)) - 1
-
-                elem.css("width", x)
-                elem.css("height", y)
-            }
-        }
-    }
-
-    function move(t){
-        let elem = $(t)
-        let position = elem.offset()
-
-        let x = Math.random() * ($(window).width() - 50) + 20
-        let y = Math.random() * ($(window).height() - 50) + 20
-
-        elem.css("position", "absolute")
-        elem.css("top", y)
-        elem.css("left", x)
-    }
-
-    function fall(t){
-
-        let elem = $(t)
-        let bottom = $(window).height()
-
-        let offset = elem.offset()
-        
-        elem.css("position", "absolute").css("left", offset.left).css("top", offset.top)
-        
-        const id  = setInterval(interval, 20)
-
-        function interval(){
-            if (offset.top >= bottom){
-                clearInterval(id)
-                elem.hide()
-            }
-            else{
-                offset.top += 10
-                elem.css("top", offset.top)
-            }
-        }
-
-        
-
-    }
-
-
-
-    $("#div").on("click", "#otro", function(event){
-        alert("Ahora ya somos novios!!!")
-    })
-   
-
-</script>
