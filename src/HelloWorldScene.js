@@ -1,3 +1,4 @@
+import Phaser from 'phaser'
 
 export default class HelloWorldScene extends Phaser.Scene {
 	constructor() {
@@ -25,7 +26,7 @@ export default class HelloWorldScene extends Phaser.Scene {
 
 		const logo = this.physics.add.image(400, 100, 'logo')
 
-		logo.setVelocity(100, 200)
+		logo.setVelocity(200, 200)
 		logo.setBounce(1, 1)
 		logo.setCollideWorldBounds(true)
 
