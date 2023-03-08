@@ -3,7 +3,9 @@
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://github.com/crisselene/DVI)
 
->510 es un videojuego de puzzles creado para la asignatura de "DESARROLLO DE VIDEOJUEGOS MEDIANTE >TECNOLOGÍAS WEB 22-23" impartida en la Universidad Complutense de Madrid bajo una compañia >ficticia bautizada como "BooGames".
+>510 es un videojuego de puzzles creado para la asignatura de "DESARROLLO DE VIDEOJUEGOS MEDIANTE 
+>TECNOLOGÍAS WEB 22-23" impartida en la Universidad Complutense de Madrid bajo una compañia 
+>ficticia bautizada como "BooGames".
 
 "BooGames" se encuentra formada por:
 - Pablo Martínez
