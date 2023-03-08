@@ -1,5 +1,5 @@
 body{
-    background-image: url('/img/background.jpg') !important;
+    background-image: url('./public/img/background.jpg') !important;
 }
 
 #logo{
