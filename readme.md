@@ -40,8 +40,7 @@
 
 ## Licencia
 
-MIT
-
+![License](https://img.shields.io/badge/license-MIT-green)
 
 
    [node.js]: <http://nodejs.org>
