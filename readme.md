@@ -18,7 +18,9 @@
 510 es un juego escape room de ambiente tétrico y actual inspirado en la mitología zaragozana. En él, nuestro protagonista deberá sobrevivir a la habitación 510, un lugar propio de leyendas que, en teoría, hacía mucho que desapareció de los pasillos del hotel Corona de Aragón. Un error sitúa a nuestro protagonista como su próximo cliente, e ignorando todo lo que le espera, acepta su destino en aquella habitación. Una vez cruza las medianías de aquella habitación, la puerta desaparece sin previo aviso y nuestro protagonista decide no dejarse invadir por el miedo y comenzar su fuga de aquella tétrica habitación. Deberá cruzar habitaciones, tétricos pasillos e incluso dimensiones para poder regresar a casa.
 
 
+## Capturas de Pantalla
 
+![Captura1](https://gamedevacademy.org/wp-content/uploads/2018/05/Cross-Road-Game.jpg.webp)
 
 ## Tecnologías
 
