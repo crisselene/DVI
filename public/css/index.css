@@ -1,14 +1,19 @@
-body{
-    background-image: url('./public/img/background.jpg') !important;
-}
 
-#logo{
-    width: 10rem;
-    margin-right: 1rem;
+body{
+    background: linear-gradient(to bottom, black 40%, rgb(144, 0, 134), black) !important    ;
+    color: antiquewhite;
 }
 
 h1{
     font-family: fantasy;
-    color: antiquewhite;
-    margin-left: 1rem;
 }
+.fuente{
+    
+}
+#futer{
+    height: 5em;
+    background-color: black;
+}
+
+
+

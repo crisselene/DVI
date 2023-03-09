@@ -5,24 +5,73 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<script src="./lib/phaser.js"></script>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 	<link rel="stylesheet" href="./public/css/index.css">
 	<title>510: El juego</title>
 </head>
+
 <body>
-	<div id="app" class="container">
-		<div class="d-flex align-items-center justify-content-center">
-			<img id="logo" src="./assets/Logo.png" alt="">
-			<h1>510</h1> 
+	<div class="container d-flex align-items-center justify-content-center flex-column">
+		<div class="d-flex">
+			<img id="logo" src="./assets/Logo.png" alt="" width="120rem" class="me-3">
+			<h1>510</h1>
 			<!-- Si quereis cambiar la letra o lo que sea es completamente compresible
 				pero no veo ninguna que de sensacion de miedo 
 				el css solo tiene el tamaño tipo de letra y colores-->
-		</div>		
+
+		</div>
+		<div id="app" class="mt-5 mb-5">
+			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+			crossorigin="anonymous"></script>
+			<script type="module" src="./src/main.js"></script>
+		</div>
+		<div>		
+			<h3 class="text-center">Instrucciones</h3>
+			<div class="d-flex align-items-center border rounded p-3">
+				<div class="d-flex flex-column align-items-center me-4">
+					<img id="movimientos" class="fotoInstruccion" height="100em" src="./assets/Icons/wasd.png" alt="">
+					<label for="movimientos">Movimientos</label>
+				</div>
+				<div class="d-flex flex-column align-items-center me-4">
+					<img id="movimientos" class="fotoInstruccion" width="100em" src="./assets/Icons/E.png" alt="">
+					<label for="movimientos">*Accion*</label>
+				</div>
+				<div class="d-flex flex-column align-items-center me-3">
+					<img id="movimientos" class="fotoInstruccion" width="100em" src="./assets/Icons/ESC.png" alt="">
+					<label for="movimientos">*Accion*</label>
+				</div>
+				<div class="d-flex flex-column align-items-center me-3">
+					<img id="movimientos" class="fotoInstruccion" width="96em" src="./assets/Icons/L_MOUSE.png" alt="">
+					<label for="movimientos">*Accion*</label>
+				</div>
+			</div>
+			
+			
+		</div>
+		
+		<h2 class="display-6 mt-5">Créditos</h2>
+		<div class="p-5 border w-50 rounded fuente">
+			<p>
+				Juego desarrollado para la asignatura de DVI de la Universidad Complutense de Madrid
+				por:
+			</p>
+			<div class="d-flex flex-column justify-content-center align-items-center mt-5">
+				<p class="m-1">Eros Guerrero Sosa</p>
+				<p class="m-1">Cristina Díez Sobrino</p>
+				<p class="m-1">Samuel Rodríguez Gómez</p>
+				<p class="m-1">Pablo Martínez González</p>
+
+			</div>
+			
+		</div>
+
 	</div>
+
 	
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-	<script type="module" src="./src/main.js"></script>
+
+
 </body>
 
 </html>
-
