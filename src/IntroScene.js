@@ -45,14 +45,18 @@ export default class SceneIntro extends Phaser.Scene {
 		this.input.on('pointerover', (event, gameObjects)=> {
 			this.clickSound.play();
 			gameObjects[0].setTint(0xff0000);
-			
 		});
 
-		this.input.on('pointerout', function (event, gameObjects) {
+		this.input.on('pointerout', (event, gameObjects)=> {
 			gameObjects[0].clearTint();
 		});
 
-		
+		this.boton.on('pointerup',  function (pointer){
+			this.music.stop();
+			this.door.stop();
+            this.scene.start('FirstScene');
+
+        }, this);
 	}
 	
 }
