@@ -11,7 +11,13 @@ export default class SceneIntro extends Phaser.Scene {
 		this.load.image('background', 'assets/incio.png');
 		this.load.image('button', 'assets/buttons/button_white_play.png');
 		this.load.audio('music', [
-            'assets/music/Clouds.m4a'
+            'assets/audio/Clouds.m4a'
+        ]);
+		this.load.audio('clickSound', [
+            'assets/audio/click.mp3'
+        ]);
+		this.load.audio('door', [
+            'assets/audio/doorCreekAmbient.mp3'
         ]);
 	}
 
@@ -22,14 +28,19 @@ export default class SceneIntro extends Phaser.Scene {
 		this.boton = this.add.sprite(400,450, 'button').setInteractive();
 		this.boton.displayHeight= 70;
 		this.boton.displayWidth= 200;
+		
 
-		this.music = this.sound.add("music", { loop: true });
+		this.music = this.sound.add("music",{volume: 0.5, loop: true });
+		this.door = this.sound.add("door", { loop: true });
+		this.clickSound = this.sound.add("clickSound", { loop: false });
 
         this.music.play();
+		this.door.play();
 
-
-		this.input.on('pointerover', function (event, gameObjects) {
+		this.input.on('pointerover', (event, gameObjects)=> {
+			this.clickSound.play();
 			gameObjects[0].setTint(0xff0000);
+			
 		});
 
 		this.input.on('pointerout', function (event, gameObjects) {
