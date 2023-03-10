@@ -1,19 +1,22 @@
-
-body{
-    background: linear-gradient(to bottom, black 40%, rgb(144, 0, 134), black) !important    ;
+body {
+    background: linear-gradient(to bottom, black 40%, rgb(144, 0, 134), black) !important;
     color: antiquewhite;
 }
 
-h1{
+h1 {
     font-family: fantasy;
 }
-.fuente{
-    
-}
-#futer{
+
+.fuente {}
+
+#futer {
     height: 5em;
     background-color: black;
 }
 
+.bordeado {
+    box-shadow: 0 0 15px #ecbcbc;
+    background: transparent;
+    height: 599px!important;
 
-
+}
