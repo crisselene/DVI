@@ -7,8 +7,12 @@ export default class SceneIntro extends Phaser.Scene {
 
 
 	preload() {
+		
 		this.load.image('background', 'assets/incio.png');
 		this.load.image('button', 'assets/buttons/button_white_play.png');
+		this.load.audio('music', [
+            'assets/music/Clouds.m4a'
+        ]);
 	}
 
 	create() {
@@ -19,6 +23,11 @@ export default class SceneIntro extends Phaser.Scene {
 		this.boton.displayHeight= 70;
 		this.boton.displayWidth= 200;
 
+		this.music = this.sound.add("music", { loop: true });
+
+        this.music.play();
+
+
 		this.input.on('pointerover', function (event, gameObjects) {
 			gameObjects[0].setTint(0xff0000);
 		});
@@ -26,6 +35,7 @@ export default class SceneIntro extends Phaser.Scene {
 		this.input.on('pointerout', function (event, gameObjects) {
 			gameObjects[0].clearTint();
 		});
+
 		
 	}
 	
