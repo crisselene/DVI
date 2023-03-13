@@ -1,8 +1,9 @@
 
 
-export default class SceneIntro extends Phaser.Scene {
+// @ts-ignore
+export default class menuScene extends Phaser.Scene {
 	constructor() {
-		super('SceneIntro')
+		super('menuScene')
 	}
 
 

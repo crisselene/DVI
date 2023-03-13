@@ -1,5 +1,5 @@
 
-import IntroScene from './IntroScene.js'
+import MainMenu from './MainMenu.js'
 
 const config = {
 	type: Phaser.AUTO,
@@ -12,7 +12,7 @@ const config = {
 			gravity: { y: 200 },
 		},
 	},
-	scene: [IntroScene],
+	scene: [MainMenu],
 }
 
 export default new Phaser.Game(config)
