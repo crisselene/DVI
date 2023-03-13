@@ -11,7 +11,10 @@ export default class menuScene extends Phaser.Scene {
 		//<a href="https://www.freepik.es/foto-gratis/luz-puerta-abierta_19139596.htm#from_view=detail_alsolike">Imagen de rawpixel.com</a> en Freepik
 		this.load.image('background', 'assets/backgrounds/mainMenu/incio.png');
 		//https://nectanebo.itch.io/menu-buttons?download
-		this.load.image('button', 'assets/buttons/mainMenu/button_white_play.png');
+		this.load.image('play_button', 'assets/buttons/mainMenu/play_button.png');
+		this.load.image('sound_button', 'assets/buttons/mainMenu/sound_button.png');
+		// Variación propia Eros PS
+		this.load.image('sound_muted_button', 'assets/buttons/mainMenu/sound_muted_button.png');
 		//https://therealswirls.itch.io/psx-horror-music
 		this.load.audio('music', [
             'assets/audio/mainMenu/Clouds.m4a'
@@ -27,22 +30,32 @@ export default class menuScene extends Phaser.Scene {
 	}
 
 	create() {
+		// Background
 		this.background = this.add.image(400, 300, 'background');
 		this.background.displayWidth = this.sys.canvas.width;
         this.background.displayHeight = this.sys.canvas.height;
-		this.boton = this.add.sprite(400,450, 'button').setInteractive();
-		this.boton.displayHeight= 70;
-		this.boton.displayWidth= 200;
 		
-
+		// Play button
+		this.play_boton = this.add.sprite(400,450, 'play_button').setInteractive();
+		this.play_boton.displayHeight= 70;
+		this.play_boton.displayWidth= 200;
+		// Settings button
+		this.sound_button = this.add.sprite(760, 40, 'sound_button').setInteractive();
+		this.sound_button.displayHeight= 70;
+		this.sound_button.displayWidth= 70;
+			// Muted button
+		this.sound_muted_button = this.add.sprite(760, 40, 'sound_muted_button').setInteractive();
+		this.sound_muted_button.displayHeight= 70;
+		this.sound_muted_button.displayWidth= 70;
+		this.sound_muted_button.visible = false;
+		// Sounds & Music
 		this.music = this.sound.add("music",{volume: 0.5, loop: true });
 		this.door = this.sound.add("door", { loop: true });
-		
-
         this.music.play();
 		this.door.play();
-
 		this.clickSound = this.sound.add("clickSound", { loop: false });
+
+		// Listeners
 		this.input.on('pointerover', (event, gameObjects)=> {
 			this.clickSound.play();
 			gameObjects[0].setTint(0xff0000);
@@ -52,11 +65,38 @@ export default class menuScene extends Phaser.Scene {
 			gameObjects[0].clearTint();
 		});
 
-		this.boton.on('pointerup',  function (pointer){
+		this.play_boton.on('pointerup',  function (pointer){
 			this.music.stop();
 			this.door.stop();
             this.scene.start('FirstScene');
 
+        }, this);
+
+		// Sound button
+
+		this.sound_button.on('pointerup',  function (pointer){
+			if (!this.game.sound.mute) {
+				this.game.sound.mute = true;
+				this.sound_muted_button.visible = true;
+				this.sound_button.visible = false;
+			} else {
+				this.game.sound.mute = false;
+				this.sound_muted_button.visible = false;
+				this.sound_button.visible = true;
+			}
+        }, this);
+		
+		this.sound_muted_button.on('pointerup',  function (pointer){
+			// TODO Codigo repetido con arriba, extraer funcion
+			if (!this.game.sound.mute) {
+				this.game.sound.mute = true;
+				this.sound_muted_button.visible = true;
+				this.sound_button.visible = false;
+			} else {
+				this.game.sound.mute = false;
+				this.sound_muted_button.visible = false;
+				this.sound_button.visible = true;
+			}
         }, this);
 	}
 	
