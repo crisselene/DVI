@@ -1,6 +1,6 @@
 
 
-export default class MainMenu extends Phaser.Scene {
+export default class HelloWorldScene extends Phaser.Scene {
 	constructor() {
 		super('hello-world')
 	}
