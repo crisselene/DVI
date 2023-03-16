@@ -74,7 +74,7 @@ export default class menuScene extends Phaser.Scene {
 
 		// Sound button
 
-		this.sound_button.on('pointerup',  function (pointer){
+		function toggleMuteState(pointer){
 			if (!this.game.sound.mute) {
 				this.game.sound.mute = true;
 				this.sound_muted_button.visible = true;
@@ -84,20 +84,10 @@ export default class menuScene extends Phaser.Scene {
 				this.sound_muted_button.visible = false;
 				this.sound_button.visible = true;
 			}
-        }, this);
-		
-		this.sound_muted_button.on('pointerup',  function (pointer){
-			// TODO Codigo repetido con arriba, extraer funcion
-			if (!this.game.sound.mute) {
-				this.game.sound.mute = true;
-				this.sound_muted_button.visible = true;
-				this.sound_button.visible = false;
-			} else {
-				this.game.sound.mute = false;
-				this.sound_muted_button.visible = false;
-				this.sound_button.visible = true;
-			}
-        }, this);
+        }
+
+		this.sound_button.on('pointerup', toggleMuteState, this);	
+		this.sound_muted_button.on('pointerup', toggleMuteState, this);
 	}
 	
 }
