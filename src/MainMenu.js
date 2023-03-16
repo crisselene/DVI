@@ -38,15 +38,15 @@ export default class menuScene extends Phaser.Scene {
         this.background.displayHeight = this.sys.canvas.height;
 		
 		// Play button
-		this.play_boton = this.add.sprite(400,450, 'play_button').setInteractive();
+		this.play_boton = this.add.image(400,450, 'play_button').setInteractive();
 		this.play_boton.displayHeight= 70;
 		this.play_boton.displayWidth= 200;
 		// Settings button
-		this.sound_button = this.add.sprite(760, 40, 'sound_button').setInteractive();
+		this.sound_button = this.add.image(760, 40, 'sound_button').setInteractive();
 		this.sound_button.displayHeight= 70;
 		this.sound_button.displayWidth= 70;
 			// Muted button
-		this.sound_muted_button = this.add.sprite(760, 40, 'sound_muted_button').setInteractive();
+		this.sound_muted_button = this.add.image(760, 40, 'sound_muted_button').setInteractive();
 		this.sound_muted_button.displayHeight= 70;
 		this.sound_muted_button.displayWidth= 70;
 		this.sound_muted_button.visible = false;
