@@ -8,9 +8,6 @@ const config = {
 	height: 600,
 	physics: {
 		default: 'arcade',
-		arcade: {
-		
-		},
 	},
 	scene: [MainMenu, FirstScene],
 }

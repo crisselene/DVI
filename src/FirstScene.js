@@ -18,7 +18,7 @@ export default class FirstScene extends Phaser.Scene {
 		this.background.displayWidth = this.sys.canvas.width;
         this.background.displayHeight = this.sys.canvas.height;
 
-		let player = new Player(this, 100, 100)
+		this.player = new Player(this, 100, 100)
 	
 	
 	}
