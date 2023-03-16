@@ -75,15 +75,9 @@ export default class menuScene extends Phaser.Scene {
 		// Sound button
 
 		function toggleMuteState(pointer){
-			if (!this.game.sound.mute) {
-				this.game.sound.mute = true;
-				this.sound_muted_button.visible = true;
-				this.sound_button.visible = false;
-			} else {
-				this.game.sound.mute = false;
-				this.sound_muted_button.visible = false;
-				this.sound_button.visible = true;
-			}
+			this.game.sound.mute = !this.game.sound.mute;
+			this.sound_muted_button.visible = !this.sound_muted_button.visible;
+			this.sound_button.visible = !this.sound_button.visible;
         }
 
 		this.sound_button.on('pointerup', toggleMuteState, this);	
