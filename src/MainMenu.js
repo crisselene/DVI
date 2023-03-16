@@ -10,9 +10,11 @@ export default class menuScene extends Phaser.Scene {
 	preload() {
 		//<a href="https://www.freepik.es/foto-gratis/luz-puerta-abierta_19139596.htm#from_view=detail_alsolike">Imagen de rawpixel.com</a> en Freepik
 		this.load.image('background', 'assets/backgrounds/mainMenu/incio.png');
+
 		//https://nectanebo.itch.io/menu-buttons?download
 		this.load.image('play_button', 'assets/buttons/mainMenu/play_button.png');
 		this.load.image('sound_button', 'assets/buttons/mainMenu/sound_button.png');
+
 		// Variación propia Eros PS
 		this.load.image('sound_muted_button', 'assets/buttons/mainMenu/sound_muted_button.png');
 		//https://therealswirls.itch.io/psx-horror-music
@@ -65,7 +67,7 @@ export default class menuScene extends Phaser.Scene {
 			gameObjects[0].clearTint();
 		});
 
-		this.play_boton.on('pointerup',  function (pointer){
+		this.play_boton.on('pointerup', (pointer) =>{
 			this.music.stop();
 			this.door.stop();
             this.scene.start('FirstScene');
@@ -74,30 +76,14 @@ export default class menuScene extends Phaser.Scene {
 
 		// Sound button
 
-		this.sound_button.on('pointerup',  function (pointer){
-			if (!this.game.sound.mute) {
-				this.game.sound.mute = true;
-				this.sound_muted_button.visible = true;
-				this.sound_button.visible = false;
-			} else {
-				this.game.sound.mute = false;
-				this.sound_muted_button.visible = false;
-				this.sound_button.visible = true;
-			}
-        }, this);
-		
-		this.sound_muted_button.on('pointerup',  function (pointer){
-			// TODO Codigo repetido con arriba, extraer funcion
-			if (!this.game.sound.mute) {
-				this.game.sound.mute = true;
-				this.sound_muted_button.visible = true;
-				this.sound_button.visible = false;
-			} else {
-				this.game.sound.mute = false;
-				this.sound_muted_button.visible = false;
-				this.sound_button.visible = true;
-			}
-        }, this);
+		let toggleMuteState = (pointer) =>{
+			this.game.sound.mute = !this.game.sound.mute;
+			this.sound_muted_button.visible = !this.sound_muted_button.visible;
+			this.sound_button.visible = !this.sound_button.visible;
+        }
+
+		this.sound_button.on('pointerup', toggleMuteState, this);	
+		this.sound_muted_button.on('pointerup', toggleMuteState, this);
 	}
 	
 }
