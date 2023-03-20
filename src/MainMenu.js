@@ -29,8 +29,6 @@ export default class menuScene extends Phaser.Scene {
 		this.load.audio('door', [
             'assets/audio/mainMenu/doorCreekAmbient.mp3'
         ]);
-
-		
 	}
 
 	create() {
