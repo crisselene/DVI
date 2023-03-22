@@ -1,6 +1,7 @@
 
 import MainMenu from './MainMenu.js'
-import FirstScene from './FirstScene.js'
+import FirstScene from './Escenas/FirstScene.js'
+import DialogScene from './Escenas/DialogScene.js'
 const config = {
 	type: Phaser.AUTO,
 	parent: 'app',

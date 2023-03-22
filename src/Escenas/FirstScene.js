@@ -1,4 +1,4 @@
-import Player from "./Player.js";
+import Player from "../Player.js";
 
 
 export default class FirstScene extends Phaser.Scene {
@@ -43,7 +43,7 @@ export default class FirstScene extends Phaser.Scene {
 		
 		//collisions
 		mueblesLayer.setCollisionByProperty({collides:true}); 
-		this.physics.add.collider(this.player, mueblesLayer, ()=>console.log('collide'), null, this);
+		this.physics.add.collider(this.player, mueblesLayer, ()=>{console.log(this.scene.get('DialogScene'))}, null, this);
 		paredesLayer.setCollisionBetween(0,4);
 		paredesLayer.setCollisionBetween(50,54);
 
