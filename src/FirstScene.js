@@ -36,14 +36,18 @@ export default class FirstScene extends Phaser.Scene {
 		mueblesLayer.displayHeight = this.sys.canvas.height;
 		
 		//player
-		this.player = new Player(this, 370, 500)
+		this.player = new Player(this, 370, 500);
 		
 		//collisions
-		this.physics.add.collider(this.player, mueblesLayer);
-		this.physics.add.collider(this.player, paredesLayer);
+		mueblesLayer.setCollisionByProperty({collides:true}); 
+		this.physics.add.collider(this.player, mueblesLayer, ()=>console.log('collide'), null, this);
 		paredesLayer.setCollisionBetween(0,4);
 		paredesLayer.setCollisionBetween(50,54);
-		mueblesLayer.setCollisionBetween(136,140);
+
+		this.physics.add.collider(this.player, paredesLayer);
+		//this.physics.add.collider(this.player, mueblesLayer);
+		
+		
 	
 	
 	}
