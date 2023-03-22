@@ -18,6 +18,9 @@ export default class FirstScene extends Phaser.Scene {
 	}
 
 	create() {		
+
+		
+
 		//mapeado
 		const map = this.make.tilemap({key: "map", tileWidth: 32, tileHeight:32 });
 		const tileset = map.addTilesetImage("paredes","tiles");
@@ -45,11 +48,17 @@ export default class FirstScene extends Phaser.Scene {
 		paredesLayer.setCollisionBetween(50,54);
 		mueblesLayer.setCollisionBetween(136,140);
 	
+
+		//camara
+		this.cameras.main.setBounds(0, 0, this.sys.canvas.width, this.sys.canvas.height);
+		this.cameras.main.setZoom(2)
+		//this.cameras.main.centerOn(this.player.x, this.player.y)
+		this.cameras.main.startFollow(this.player, true)
 	
 	}
 
 	update(){
-
+		//this.cameras.main.centerOn(this.player.x, this.player.y)
 	}
 	
 }

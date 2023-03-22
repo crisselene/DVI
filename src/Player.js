@@ -54,10 +54,6 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
     
     
         this.mod = Math.sqrt(10000 + 10000)
-    
-        if (Number(this.x.toPrecision(3)) >= 610){
-            this.visible = false
-        }
 
 		if(this.dKey.isDown){
 
