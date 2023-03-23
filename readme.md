@@ -40,6 +40,10 @@
 
 510 no requiere instalación, se puede jugar directamente en [510 Web](https://crisselene.github.io/DVI/) 
 
+## Recursos
+### Recursos visuales
+- https://rmw-restaff.itch.io/scarestaff-october-2021
+
 ## Licencia
 
 ![License](https://img.shields.io/badge/license-MIT-green)
