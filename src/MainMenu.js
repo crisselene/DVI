@@ -1,6 +1,5 @@
 
-import Phaser from "phaser";
-// @ts-ignore
+
 export default class menuScene extends Phaser.Scene {
 	constructor() {
 		super('menuScene')

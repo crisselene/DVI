@@ -1,4 +1,4 @@
-import Phaser from "phaser";
+
 import MainMenu from './MainMenu.js'
 import FirstScene from './Escenas/FirstScene.js'
 import DialogScene from './Escenas/DialogScene.js'
