@@ -42,7 +42,9 @@
 
 ## Recursos
 ### Recursos visuales
-- https://rmw-restaff.itch.io/scarestaff-october-2021
+510 es un juego que pretende poner al usuario en cierta tensión incluyendo objetos con un toque oscuro y tétrico.
+- Objetos terroríficos:
+  https://rmw-restaff.itch.io/scarestaff-october-2021
 
 ## Licencia
 
