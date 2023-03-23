@@ -10,11 +10,11 @@ export default class FirstScene extends Phaser.Scene {
 		//this.load.image('mainroom', 'assets/Tilemaps/mainRoom.png');
 		//this.load.tilemapTiledJSON('mapa', '/assets/Tilemaps/mainRoom.json' );
 
-		this.load.image("tiles", "/assets/Tilesets/Tiles.png");
-		this.load.image("props", "/assets/Tilesets/Props.png");
+		this.load.image("tiles", "assets/Tilesets/Tiles.png");
+		this.load.image("props", "assets/Tilesets/Props.png");
 		this.load.tilemapTiledJSON('map','assets/Tilemaps/prueba1.json');
-		this.load.spritesheet("player", "/assets/player/player.png", {frameWidth: 16, frameHeight:24});
-		this.load.image("vision", "/assets/backgrounds/vision.png")
+		this.load.spritesheet("player", "assets/player/player.png", {frameWidth: 16, frameHeight:24});
+		this.load.image("vision", "assets/backgrounds/vision.png")
 	}
 
 	create() {		
