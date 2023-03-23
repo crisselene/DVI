@@ -13,7 +13,6 @@ export default class FirstScene extends Phaser.Scene {
 		this.load.image("tiles", "/assets/Tilesets/Tiles.png");
 		this.load.image("props", "/assets/Tilesets/Props.png");
 		this.load.tilemapTiledJSON('map','assets/Tilemaps/prueba1.json');
-
 		this.load.spritesheet("player", "/assets/player/player.png", {frameWidth: 16, frameHeight:24});
 	}
 
@@ -43,7 +42,7 @@ export default class FirstScene extends Phaser.Scene {
 		
 		//collisions
 		mueblesLayer.setCollisionByProperty({collides:true}); 
-		this.physics.add.collider(this.player, mueblesLayer, ()=>{console.log(this.scene.get('DialogScene'))}, null, this);
+		this.physics.add.collider(this.player, mueblesLayer, ()=>{this.scene.get('DialogScene').showDialog('Chocaste contra un mueble')}, null, this);
 		paredesLayer.setCollisionBetween(0,4);
 		paredesLayer.setCollisionBetween(50,54);
 
