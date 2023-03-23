@@ -1,3 +1,4 @@
+import Phaser from "phaser";
 
 export default class IntroScene extends Phaser.Scene{
 
