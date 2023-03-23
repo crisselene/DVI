@@ -1,5 +1,4 @@
 
-import Phaser from "phaser";
 // @ts-ignore
 export default class menuScene extends Phaser.Scene {
 	constructor() {
@@ -70,7 +69,8 @@ export default class menuScene extends Phaser.Scene {
 		this.play_boton.on('pointerup', (pointer) =>{
 			this.music.stop();
 			this.door.stop();
-            this.scene.start('IntroScene');
+			this.scene.launch('DialogScene')
+            this.scene.start('FirstScene');
 
         }, this);
 
