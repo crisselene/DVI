@@ -1,4 +1,3 @@
-import Phaser from "phaser";
 import Player from "../Player.js";
 
 
