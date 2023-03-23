@@ -14,6 +14,7 @@ export default class FirstScene extends Phaser.Scene {
 		this.load.image("props", "/assets/Tilesets/Props.png");
 		this.load.tilemapTiledJSON('map','assets/Tilemaps/prueba1.json');
 		this.load.spritesheet("player", "/assets/player/player.png", {frameWidth: 16, frameHeight:24});
+		this.load.image("vision", "/assets/backgrounds/vision.png")
 	}
 
 	create() {		
@@ -39,7 +40,30 @@ export default class FirstScene extends Phaser.Scene {
 		
 		//player
 		this.player = new Player(this, 370, 500);
-		
+
+		this.vision = this.make.image({
+			x: this.player.x,
+			y: this.player.y,
+			key: "vision",
+			add: false
+		})
+
+		this.vision.scale = 0.1 
+
+		const width = this.scale.width
+		const height = this.scale.height
+
+		const rt = this.make.renderTexture({
+			width, height
+		}, true)
+
+		rt.fill(0x000000, 1)
+		rt.draw(layer)
+		rt.setTint(0x565656)
+
+		rt.mask = new Phaser.Display.Masks.BitmapMask(this, this.vision)
+		rt.mask.invertAlpha = true
+
 		//collisions
 		mueblesLayer.setCollisionByProperty({collides:true}); 
 		this.physics.add.collider(this.player, mueblesLayer, ()=>{this.scene.get('DialogScene').showDialog('Chocaste contra un mueble')}, null, this);
@@ -62,6 +86,10 @@ export default class FirstScene extends Phaser.Scene {
 
 	update(){
 		//this.cameras.main.centerOn(this.player.x, this.player.y)
+		if (this.vision){
+			this.vision.x = this.player.x
+			this.vision.y = this.player.y
+		}
 	}
 	
 }
