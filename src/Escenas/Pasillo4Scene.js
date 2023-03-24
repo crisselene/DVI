@@ -1,9 +1,9 @@
 import Player from "../Player.js";
 
 
-export default class FirstScene extends Phaser.Scene {
+export default class Pasillo4Scene extends Phaser.Scene {
 	constructor() {
-		super('FirstScene')
+		super('Pasillo4Scene')
 	}
 	preload() {
 		//<a href="https://www.freepik.es/foto-gratis/luz-puerta-abierta_19139596.htm#from_view=detail_alsolike">Imagen de rawpixel.com</a> en Freepik
@@ -12,7 +12,8 @@ export default class FirstScene extends Phaser.Scene {
 
 		this.load.image("tiles", "assets/Tilesets/Tiles.png");
 		this.load.image("props", "assets/Tilesets/Props.png");
-		this.load.tilemapTiledJSON('map','assets/Tilemaps/prueba1.json');
+		this.load.image("alfombras", "assets/Tilesets/alfombras.png");
+		this.load.tilemapTiledJSON('map4','assets/Tilemaps/pasillo4.json');
 		this.load.spritesheet("player", "assets/player/player.png", {frameWidth: 16, frameHeight:24});
 		this.load.image("vision", "assets/backgrounds/vision.png")
 	}
@@ -22,13 +23,16 @@ export default class FirstScene extends Phaser.Scene {
 		
 
 		//mapeado
-		const map = this.make.tilemap({key: "map", tileWidth: 32, tileHeight:32 });
+		const map = this.make.tilemap({key: "map4", tileWidth: 32, tileHeight:32 });
 		const tileset = map.addTilesetImage("paredes","tiles");
 		const tileset2 = map.addTilesetImage("muebles","props");
+		const tilesetAlfombras = map.addTilesetImage("alfombra","alfombras");
 		
 		const layer = map.createLayer("layer1", tileset, 0, 0);
+		const alfombraLayer = map.createLayer("alfombra", tilesetAlfombras, 0, 0);
 		const paredesLayer = map.createLayer("paredes", tileset, 0, 0);
 		const mueblesLayer = map.createLayer("muebles", tileset2, 0, 0);
+		
 
 		//resize mapeado
 		layer.displayWidth = this.sys.canvas.width;
@@ -37,10 +41,13 @@ export default class FirstScene extends Phaser.Scene {
 		paredesLayer.displayHeight = this.sys.canvas.height;
 		mueblesLayer.displayWidth = this.sys.canvas.width;
 		mueblesLayer.displayHeight = this.sys.canvas.height;
+		alfombraLayer.displayWidth = this.sys.canvas.width;
+		alfombraLayer.displayHeight = this.sys.canvas.height;
 		
 		//player
-		this.player = new Player(this, 370, 500);
+		this.player = new Player(this, 90, 315);
 
+		/*
 		this.vision = this.make.image({
 			x: this.player.x,
 			y: this.player.y,
@@ -65,7 +72,8 @@ export default class FirstScene extends Phaser.Scene {
 
 		rt.mask = new Phaser.Display.Masks.BitmapMask(this, this.vision)
 		rt.mask.invertAlpha = true
-
+		*/
+		
 		//collisions
 		this.player.setCollideWorldBounds(true);
 
@@ -85,15 +93,21 @@ export default class FirstScene extends Phaser.Scene {
 		this.cameras.main.setZoom(2)
 		//this.cameras.main.centerOn(this.player.x, this.player.y)
 		this.cameras.main.startFollow(this.player, true)
-	
+		
 	}
 
 	update(){
 		//this.cameras.main.centerOn(this.player.x, this.player.y)
-		if (this.vision){
+		/*if (this.vision){
 			this.vision.x = this.player.x
 			this.vision.y = this.player.y
-		}
+		}*/
+
+		if (Number(this.player.y.toPrecision(3)) <= 230){
+			console.log("salir")
+            this.scene.start('FirstScene');
+        }
+
 	}
 	
 }
