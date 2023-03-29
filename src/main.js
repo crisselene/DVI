@@ -3,10 +3,10 @@ import MainMenu from './MainMenu.js'
 import FirstScene from './Escenas/FirstScene.js'
 import DialogScene from './Escenas/DialogScene.js'
 import IntroScene from './Escenas/IntroScene.js'
-import Pasillo1Scene from './Escenas/Pasillo1Scene'
-import Pasillo2Scene from './Escenas/Pasillo2Scene'
-import Pasillo3Scene from './Escenas/Pasillo3Scene'
-import Pasillo4Scene from './Escenas/Pasillo4Scene'
+import Pasillo1Scene from './Escenas/Pasillo1Scene.js'
+import Pasillo2Scene from './Escenas/Pasillo2Scene.js'
+import Pasillo3Scene from './Escenas/Pasillo3Scene.js'
+import Pasillo4Scene from './Escenas/Pasillo4Scene.js'
 const config = {
 	type: Phaser.AUTO,
 	parent: 'app',
