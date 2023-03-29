@@ -1,5 +1,5 @@
 import Player from "../Player.js";
-import Pasillo2Scene from './Pasillo2Scene';
+//import Pasillo2Scene from './Pasillo2Scene';
 
 export default class Pasillo1Scene extends Phaser.Scene {
 	constructor() {
