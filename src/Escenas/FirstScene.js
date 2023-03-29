@@ -62,6 +62,7 @@ export default class FirstScene extends Phaser.Scene {
 		rt.setTint(0x3D3C3C)
 
 		rt.draw(mueblesLayer)
+		rt.draw(paredesLayer)
 
 		rt.mask = new Phaser.Display.Masks.BitmapMask(this, this.vision)
 		rt.mask.invertAlpha = true
