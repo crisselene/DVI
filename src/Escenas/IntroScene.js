@@ -17,7 +17,7 @@ export default class IntroScene extends Phaser.Scene{
     }
 
     changescene(){
-        this.scene.start('FirstScene');
+        this.scene.start('Pasillo1Scene');
     }
 
 
