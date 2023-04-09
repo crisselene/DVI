@@ -1,7 +1,6 @@
 
 import MainMenu from './MainMenu.js'
 import FirstScene from './Escenas/FirstScene.js'
-import DialogScene from './Escenas/DialogScene.js'
 import IntroScene from './Escenas/IntroScene.js'
 import Pasillo1Scene from './Escenas/Pasillo1Scene.js'
 import Pasillo2Scene from './Escenas/Pasillo2Scene.js'
@@ -15,7 +14,7 @@ const config = {
 	physics: {
 		default: 'arcade',
 	},
-	scene: [MainMenu, FirstScene, DialogScene, IntroScene, Pasillo1Scene,Pasillo2Scene,Pasillo3Scene,Pasillo4Scene],
+	scene: [MainMenu, FirstScene, IntroScene, Pasillo1Scene,Pasillo2Scene,Pasillo3Scene,Pasillo4Scene],
 }
 
 export default new Phaser.Game(config)
