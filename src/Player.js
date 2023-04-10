@@ -121,7 +121,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
 
     sprint(){
         if (this.shiftKey.isDown){
-            this.setVelocity(this.body.velocity.x * 5, this.body.velocity.y * 5)
+            this.setVelocity(this.body.velocity.x * 2, this.body.velocity.y * 2)
             if (this.anims.currentAnim)
                 this.anims.currentAnim.frameRate = 20
         }

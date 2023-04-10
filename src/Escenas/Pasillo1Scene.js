@@ -1,4 +1,5 @@
 import Player from "../Player.js";
+import DialogPlugin from "../Plugins/DialogPlugin.js";
 //import Pasillo2Scene from './Pasillo2Scene';
 
 export default class Pasillo1Scene extends Phaser.Scene {
@@ -20,7 +21,10 @@ export default class Pasillo1Scene extends Phaser.Scene {
 
 	create() {		
 
-		
+		//Dialgos
+		let dialogos = new DialogPlugin(this);
+		dialogos.init();
+		dialogos.setText("Me han dado las llaves de la habitacion 510. Deberia buscarla...", true)
 
 		//mapeado
 		const map = this.make.tilemap({key: "map1", tileWidth: 32, tileHeight:32 });
@@ -90,7 +94,7 @@ export default class Pasillo1Scene extends Phaser.Scene {
 
 		//camara
 		this.cameras.main.setBounds(0, 0, this.sys.canvas.width, this.sys.canvas.height);
-		this.cameras.main.setZoom(2)
+		this.cameras.main.setZoom()
 		//this.cameras.main.centerOn(this.player.x, this.player.y)
 		this.cameras.main.startFollow(this.player, true)
 		
