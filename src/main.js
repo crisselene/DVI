@@ -1,6 +1,11 @@
 
-import HelloWorldScene from './HelloWorldScene.js'
-
+import MainMenu from './MainMenu.js'
+import FirstScene from './Escenas/FirstScene.js'
+import IntroScene from './Escenas/IntroScene.js'
+import Pasillo1Scene from './Escenas/Pasillo1Scene.js'
+import Pasillo2Scene from './Escenas/Pasillo2Scene.js'
+import Pasillo3Scene from './Escenas/Pasillo3Scene.js'
+import Pasillo4Scene from './Escenas/Pasillo4Scene.js'
 const config = {
 	type: Phaser.AUTO,
 	parent: 'app',
@@ -8,11 +13,8 @@ const config = {
 	height: 600,
 	physics: {
 		default: 'arcade',
-		arcade: {
-			gravity: { y: 200 },
-		},
 	},
-	scene: [HelloWorldScene],
+	scene: [MainMenu, FirstScene, IntroScene, Pasillo1Scene,Pasillo2Scene,Pasillo3Scene,Pasillo4Scene],
 }
 
 export default new Phaser.Game(config)
