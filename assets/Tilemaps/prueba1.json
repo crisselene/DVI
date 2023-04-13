@@ -4504,10 +4504,12 @@
                 },
              "160":
                 {
+                 "cama":true,
                  "collides":true
                 },
              "161":
                 {
+                 "cama":true,
                  "collides":true
                 },
              "162":
@@ -4568,10 +4570,12 @@
                 },
              "185":
                 {
+                 "cama":true,
                  "collides":true
                 },
              "186":
                 {
+                 "cama":true,
                  "collides":true
                 },
              "187":
@@ -4636,10 +4640,12 @@
                 },
              "210":
                 {
+                 "cama":true,
                  "collides":true
                 },
              "211":
                 {
+                 "cama":true,
                  "collides":true
                 },
              "212":
@@ -4700,10 +4706,12 @@
                 },
              "235":
                 {
+                 "cama":false,
                  "collides":false
                 },
              "236":
                 {
+                 "cama":false,
                  "collides":false
                 },
              "237":
@@ -5531,10 +5539,12 @@
                 },
              "160":
                 {
+                 "cama":"bool",
                  "collides":"bool"
                 },
              "161":
                 {
+                 "cama":"bool",
                  "collides":"bool"
                 },
              "162":
@@ -5595,10 +5605,12 @@
                 },
              "185":
                 {
+                 "cama":"bool",
                  "collides":"bool"
                 },
              "186":
                 {
+                 "cama":"bool",
                  "collides":"bool"
                 },
              "187":
@@ -5663,10 +5675,12 @@
                 },
              "210":
                 {
+                 "cama":"bool",
                  "collides":"bool"
                 },
              "211":
                 {
+                 "cama":"bool",
                  "collides":"bool"
                 },
              "212":
@@ -5727,10 +5741,12 @@
                 },
              "235":
                 {
+                 "cama":"bool",
                  "collides":"bool"
                 },
              "236":
                 {
+                 "cama":"bool",
                  "collides":"bool"
                 },
              "237":
