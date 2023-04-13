@@ -67,20 +67,17 @@ export default class FirstScene extends Phaser.Scene {
 		this.player.setCollideWorldBounds(true);
 
 		mueblesLayer.setCollisionByProperty({collides:true}); 
-		//this.physics.add.collider(this.player, mueblesLayer, ()=>{this.scene.get('DialogScene').showDialog('Chocaste contra un mueble')}, null, this);
+		paredesLayer.setCollisionByProperty({collides:true});
 
-		paredesLayer.setCollisionByProperty({collides:true}); 
 		this.physics.add.collider(this.player, mueblesLayer, ()=>{console.log(this.scene.get('DialogScene'))}, null, this);
-
 		this.physics.add.collider(this.player, paredesLayer);
-		//this.physics.add.collider(this.player, mueblesLayer);
-
+	
 		
 		
 		cama.setCollideWorldBounds(true)
-		this.physics.add.collider(this.player, cama, () => {
-			
-		})
+		cama.setMaxVelocity(0, 0)
+		
+		this.physics.add.collider(this.player, cama)
 	
 		
 

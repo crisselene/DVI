@@ -22,7 +22,7 @@ export default class IntroScene extends Phaser.Scene{
             this.keyObjects[i].once('down', () => {
                 // Skip video
                 vid.setPaused(true);
-                this.scene.start('FirstScene');
+                this.scene.start('Pasillo1Scene');
             })
         })
         vid.on('complete', this.changescene, this);
