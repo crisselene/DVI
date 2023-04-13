@@ -15,6 +15,7 @@ export default class FirstScene extends Phaser.Scene {
 		this.load.tilemapTiledJSON('map','assets/Tilemaps/prueba1.json');
 		this.load.spritesheet("player", "assets/player/player.png", {frameWidth: 16, frameHeight:24});
 		this.load.image("vision", "assets/backgrounds/vision.png")
+		this.load.image("cama", "assets/Tilesets/cama.png")
 	}
 
 	create() {		
@@ -25,10 +26,13 @@ export default class FirstScene extends Phaser.Scene {
 		const map = this.make.tilemap({key: "map", tileWidth: 32, tileHeight:32 });
 		const tileset = map.addTilesetImage("paredes","tiles");
 		const tileset2 = map.addTilesetImage("muebles","props");
+	
 		
 		const layer = map.createLayer("layer1", tileset, 0, 0);
 		const paredesLayer = map.createLayer("paredes", tileset, 0, 0);
 		const mueblesLayer = map.createLayer("muebles", tileset2, 0, 0);
+	
+				
 
 		//resize mapeado
 		layer.displayWidth = this.sys.canvas.width;
@@ -37,6 +41,7 @@ export default class FirstScene extends Phaser.Scene {
 		paredesLayer.displayHeight = this.sys.canvas.height;
 		mueblesLayer.displayWidth = this.sys.canvas.width;
 		mueblesLayer.displayHeight = this.sys.canvas.height;
+	
 		
 		//player
 		this.player = new Player(this, 370, 500);
@@ -50,22 +55,13 @@ export default class FirstScene extends Phaser.Scene {
 
 		this.vision.scale = 0.1 
 
+		const cama = this.physics.add.image(660, 280, "cama")
+		cama.scale = 2
+	
 		const width = this.scale.width
 		const height = this.scale.height
 
-		const rt = this.make.renderTexture({
-			width, height
-		}, true)
-
-		rt.fill(0x000000, 1)
-		rt.draw(layer)
-		rt.setTint(0x3D3C3C)
-
-		rt.draw(mueblesLayer)
-		rt.draw(paredesLayer)
-
-		rt.mask = new Phaser.Display.Masks.BitmapMask(this, this.vision)
-		rt.mask.invertAlpha = true
+		
 
 		//collisions
 		this.player.setCollideWorldBounds(true);
@@ -78,7 +74,14 @@ export default class FirstScene extends Phaser.Scene {
 
 		this.physics.add.collider(this.player, paredesLayer);
 		//this.physics.add.collider(this.player, mueblesLayer);
+
 		
+		
+		cama.setCollideWorldBounds(true)
+		this.physics.add.collider(this.player, cama, () => {
+			
+		})
+	
 		
 
 		//camara
@@ -86,7 +89,18 @@ export default class FirstScene extends Phaser.Scene {
 		this.cameras.main.setZoom(2)
 		//this.cameras.main.centerOn(this.player.x, this.player.y)
 		this.cameras.main.startFollow(this.player, true)
+
+		const rt = this.make.renderTexture({
+			width, height
+		}, true)
+
+		rt.fill(0x000000, 0.8)
 	
+
+		rt.mask = new Phaser.Display.Masks.BitmapMask(this, this.vision)
+		rt.mask.invertAlpha = true
+	
+		
 	}
 
 	update(){
@@ -95,6 +109,8 @@ export default class FirstScene extends Phaser.Scene {
 			this.vision.x = this.player.x
 			this.vision.y = this.player.y
 		}
+
+		
 	}
 	
 }
