@@ -1,3 +1,4 @@
+import { Physics } from "phaser";
 import Player from "../Player.js";
 
 
@@ -31,8 +32,8 @@ export default class FirstScene extends Phaser.Scene {
 		const layer = map.createLayer("layer1", tileset, 0, 0);
 		const paredesLayer = map.createLayer("paredes", tileset, 0, 0);
 		const mueblesLayer = map.createLayer("muebles", tileset2, 0, 0);
-	
-				
+		
+		
 
 		//resize mapeado
 		layer.displayWidth = this.sys.canvas.width;
@@ -53,39 +54,52 @@ export default class FirstScene extends Phaser.Scene {
 			add: false
 		})
 
+		
 		this.vision.scale = 0.1 
 
-		const cama = this.physics.add.image(660, 280, "cama")
-		cama.scale = 2
-	
-		const width = this.scale.width
-		const height = this.scale.height
+		this.cama = this.physics.add.sprite(660, 280, "cama")
 
+		this.cama.scale = 1
+		this.cama.setCollideWorldBounds(true, 0.001)
+		this.cama.setMaxVelocity(0, 0)
 		
 
 		//collisions
 		this.player.setCollideWorldBounds(true);
+		
 
 		mueblesLayer.setCollisionByProperty({collides:true}); 
 		paredesLayer.setCollisionByProperty({collides:true});
-
-		this.physics.add.collider(this.player, mueblesLayer, ()=>{console.log(this.scene.get('DialogScene'))}, null, this);
-		this.physics.add.collider(this.player, paredesLayer);
+		
 	
+		this.physics.add.collider(this.player, [mueblesLayer, paredesLayer]);
+		this.physics.add.collider(this.player, this.cama, () => {
+			
+	
+			let position = this._positionRelative()
 		
+
+			if (this.cama.x <= 580)
+				this.cama.setImmovable( (position == 1 || ((position == 3 && this.cama.y <= 200))))
+				
+			else if (this.cama.y <= 200)
+				this.cama.setImmovable((position == 3))
+				
+				
+			
+			
+		})
 		
-		cama.setCollideWorldBounds(true)
-		cama.setMaxVelocity(0, 0)
-		
-		this.physics.add.collider(this.player, cama)
 	
 		
 
 		//camara
 		this.cameras.main.setBounds(0, 0, this.sys.canvas.width, this.sys.canvas.height);
 		this.cameras.main.setZoom(2)
-		//this.cameras.main.centerOn(this.player.x, this.player.y)
 		this.cameras.main.startFollow(this.player, true)
+
+		const width = this.scale.width
+		const height = this.scale.height
 
 		const rt = this.make.renderTexture({
 			width, height
@@ -108,6 +122,25 @@ export default class FirstScene extends Phaser.Scene {
 		}
 
 		
+			
+		
+	}
+
+	_positionRelative(){
+		
+	
+	
+
+		let a = this.cama.getTopLeft()
+		let b = this.cama.getTopRight()
+
+
+		if (this.player.getBottomRight().x <= a.x) return 0 //izq
+		else if (this.player.getBottomLeft().x >= b.x) return 1	//der 
+		else if (this.player.getBottomLeft().y <= a.y) return 2  //arr
+		else return 3  //aba
+		
 	}
 	
 }
+
