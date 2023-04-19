@@ -13,6 +13,7 @@ export default class FirstScene extends Phaser.Scene {
 
 		this.load.image("tiles", "assets/Tilesets/Tiles.png");
 		this.load.image("props", "assets/Tilesets/Props.png");
+		this.load.image("alfombras", "assets/Tilesets/alfombras.png");
 		this.load.tilemapTiledJSON('map','assets/Tilemaps/prueba1.json');
 		this.load.spritesheet("player", "assets/player/player.png", {frameWidth: 16, frameHeight:24});
 		this.load.image("vision", "assets/backgrounds/vision.png")
@@ -27,9 +28,10 @@ export default class FirstScene extends Phaser.Scene {
 		const map = this.make.tilemap({key: "map", tileWidth: 32, tileHeight:32 });
 		const tileset = map.addTilesetImage("paredes","tiles");
 		const tileset2 = map.addTilesetImage("muebles","props");
-	
+		const tilesetAlfombras = map.addTilesetImage("alfombras","alfombras");
 		
 		const layer = map.createLayer("layer1", tileset, 0, 0);
+		const alfombraLayer = map.createLayer("alfombras", tilesetAlfombras, 0, 0);
 		const paredesLayer = map.createLayer("paredes", tileset, 0, 0);
 		const mueblesLayer = map.createLayer("muebles", tileset2, 0, 0);
 		
@@ -42,6 +44,8 @@ export default class FirstScene extends Phaser.Scene {
 		paredesLayer.displayHeight = this.sys.canvas.height;
 		mueblesLayer.displayWidth = this.sys.canvas.width;
 		mueblesLayer.displayHeight = this.sys.canvas.height;
+		alfombraLayer.displayWidth = this.sys.canvas.width;
+		alfombraLayer.displayHeight = this.sys.canvas.height;
 	
 		
 		//player
