@@ -1,4 +1,4 @@
-import { Physics } from "phaser";
+
 import Player from "../Player.js";
 
 
@@ -128,9 +128,6 @@ export default class FirstScene extends Phaser.Scene {
 
 	_positionRelative(){
 		
-	
-	
-
 		let a = this.cama.getTopLeft()
 		let b = this.cama.getTopRight()
 
