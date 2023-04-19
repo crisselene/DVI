@@ -15,10 +15,12 @@ export default class DialogPlugin {
         this.borderAlpha = opts.borderAlpha || 1;
         this.windowAlpha = opts.windowAlpha || 0.8;
         this.windowColor = opts.windowColor || 0x303030;
-        this.windowHeight = opts.windowHeight || 150;
+        this.windowHeight = opts.windowHeight || 100;
         this.padding = opts.padding || 32;
         this.closeBtnColor = opts.closeBtnColor || 'darkgoldenrod';
-        this.dialogSpeed = opts.dialogSpeed || 3;
+
+        //Podeis modificar este valor para que el texto vaya mas rapido o mas lento
+        this.dialogSpeed = opts.dialogSpeed || 4;
         // used for animating the text
         this.eventCounter = 0;
         // if the dialog window is shown
@@ -43,9 +45,9 @@ export default class DialogPlugin {
     }
     // Calculates where to place the dialog window based on the game size
     _calculateWindowDimensions(width, height) {
-        var x = this.padding;
-        var y = height - this.windowHeight - this.padding;
-        var rectWidth = width - (this.padding * 2);
+        var x =  this.padding + (this.scene.cameras.main.midPoint.x - (this.scene.cameras.main.displayWidth/2));
+        var y = this.scene.cameras.main.midPoint.y + (this.scene.cameras.main.displayHeight / 2) - this.padding +   20 - this.windowHeight;
+        var rectWidth = this.scene.cameras.main.displayWidth - (this.padding * 2);
         var rectHeight = this.windowHeight;
         return {
             x,
@@ -80,8 +82,8 @@ export default class DialogPlugin {
     _createCloseModalButton() {
         var self = this;
         this.closeBtn = this.scene.make.text({
-            x: this._getGameWidth() - this.padding - 14,
-            y: this._getGameHeight() - this.windowHeight - this.padding + 3,
+            x: this.scene.cameras.main.midPoint.x + (this.scene.cameras.main.displayWidth/2) - this.padding - 14,
+            y:  this.scene.cameras.main.midPoint.y + (this.scene.cameras.main.displayHeight / 2)- this.windowHeight - this.padding + 23,
             text: 'X',
             style: {
                 font: 'bold 12px Arial',
@@ -101,8 +103,8 @@ export default class DialogPlugin {
 
     }
     _createCloseModalButtonBorder() {
-        var x = this._getGameWidth() - this.padding - 20;
-        var y = this._getGameHeight() - this.windowHeight - this.padding;
+        var x = this.scene.cameras.main.midPoint.x + (this.scene.cameras.main.displayWidth/2) - this.padding - 20;
+        var y = this.scene.cameras.main.midPoint.y + (this.scene.cameras.main.displayHeight / 2) - this.windowHeight - this.padding +20;
         this.graphics.strokeRect(x, y, 20, 20);
     }
     // Hide/Show the dialog window
@@ -133,14 +135,14 @@ export default class DialogPlugin {
     _setText(text) {
         // Reset the dialog
         if (this.text) this.text.destroy();
-        var x = this.padding + 10;
-        var y = this._getGameHeight() - this.windowHeight - this.padding + 10;
+        var x = this.scene.cameras.main.midPoint.x - (this.scene.cameras.main.displayWidth/2) + this.padding + 10;
+        var y = this.scene.cameras.main.midPoint.y + (this.scene.cameras.main.displayHeight / 2) - this.windowHeight - this.padding +    30;
         this.text = this.scene.make.text({
             x,
             y,
             text,
             style: {
-                wordWrap: { width: this._getGameWidth() - (this.padding * 2) - 25 }
+                wordWrap: { width: (this.scene.cameras.main.displayWidth) - (this.padding * 2) - 25 }
             }
         });
     }
@@ -152,4 +154,15 @@ export default class DialogPlugin {
             this.timedEvent.remove();
         }
     }
+
+    moveWindow(){
+        this.closeBtn.destroy()
+        this.graphics.destroy()
+        this._createWindow()
+        this.setText(this.dialog.join(""), false)
+         
+        console.log(this.dialog.join(""))
+    }
+
+
 }

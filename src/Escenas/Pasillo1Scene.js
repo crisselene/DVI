@@ -3,28 +3,29 @@ import DialogPlugin from "../Plugins/DialogPlugin.js";
 //import Pasillo2Scene from './Pasillo2Scene';
 
 export default class Pasillo1Scene extends Phaser.Scene {
+
 	constructor() {
 		super('Pasillo1Scene')
+		this.dialogos = new DialogPlugin(this);
 	}
 	preload() {
 		//<a href="https://www.freepik.es/foto-gratis/luz-puerta-abierta_19139596.htm#from_view=detail_alsolike">Imagen de rawpixel.com</a> en Freepik
 		//this.load.image('mainroom', 'assets/Tilemaps/mainRoom.png');
 		//this.load.tilemapTiledJSON('mapa', '/assets/Tilemaps/mainRoom.json' );
-
+		
 		this.load.image("tiles", "assets/Tilesets/Tiles.png");
 		this.load.image("props", "assets/Tilesets/Props.png");
 		this.load.image("alfombras", "assets/Tilesets/alfombras.png");
 		this.load.tilemapTiledJSON('map1','assets/Tilemaps/pasillo1.json');
 		this.load.spritesheet("player", "assets/player/player.png", {frameWidth: 16, frameHeight:24});
 		this.load.image("vision", "assets/backgrounds/vision.png")
+		
+
 	}
 
 	create() {		
 
-		//Dialgos
-		let dialogos = new DialogPlugin(this);
-		dialogos.init();
-		dialogos.setText("Me han dado las llaves de la habitacion 510. Deberia buscarla...", true)
+	
 
 		//mapeado
 		const map = this.make.tilemap({key: "map1", tileWidth: 32, tileHeight:32 });
@@ -94,9 +95,14 @@ export default class Pasillo1Scene extends Phaser.Scene {
 
 		//camara
 		this.cameras.main.setBounds(0, 0, this.sys.canvas.width, this.sys.canvas.height);
-		this.cameras.main.setZoom()
+		this.cameras.main.setZoom(2)
 		//this.cameras.main.centerOn(this.player.x, this.player.y)
 		this.cameras.main.startFollow(this.player, true)
+
+		//Dialgos
+		
+		this.dialogos.init();
+		this.dialogos.setText("Me han dado las llaves de la habitacion 510. Deberia buscarla...", true)
 		
 	}
 
@@ -111,6 +117,10 @@ export default class Pasillo1Scene extends Phaser.Scene {
 			console.log("salir")
             this.scene.start('Pasillo2Scene');
         }
+
+		if(!this.player.isStopped()){
+			this.dialogos.moveWindow();
+		}
 
 	}
 	
