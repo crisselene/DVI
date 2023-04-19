@@ -18,6 +18,7 @@ export default class FirstScene extends Phaser.Scene {
 		this.load.spritesheet("player", "assets/player/player.png", {frameWidth: 16, frameHeight:24});
 		this.load.image("vision", "assets/backgrounds/vision.png")
 		this.load.image("cama", "assets/Tilesets/cama.png")
+		this.load.image("escalera", "assets/Tilesets/escalerascut.png")
 	}
 
 	create() {		
@@ -61,11 +62,17 @@ export default class FirstScene extends Phaser.Scene {
 		
 		this.vision.scale = 0.1 
 
-		this.cama = this.physics.add.sprite(660, 280, "cama")
+		this.escaleras = this.physics.add.image(660, 280, "escalera")
+		this.escaleras.scale = 1.5
 
-		this.cama.scale = 1
+		this.cama = this.physics.add.sprite(660, 280, "cama")
+		this.cama.scale = 1.5
 		this.cama.setCollideWorldBounds(true, 0.001)
 		this.cama.setMaxVelocity(0, 0)
+
+		
+		
+		this.player.depth = 2
 		
 
 		//collisions
@@ -90,12 +97,19 @@ export default class FirstScene extends Phaser.Scene {
 				this.cama.setImmovable((position == 3))
 				
 				
-			
-			
 		})
 		
+		this.physics.add.overlap(this.player, this.escaleras, () => {
+
+			let v1 = this.player.getCenter()
+			let v2 = this.escaleras.getCenter()
+
+
+			if (v1.distance(v2) < 18)
+				this.scene.start("Pasillo1Scene")
+		})
 	
-		
+	
 
 		//camara
 		this.cameras.main.setBounds(0, 0, this.sys.canvas.width, this.sys.canvas.height);
