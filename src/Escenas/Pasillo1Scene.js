@@ -100,9 +100,11 @@ export default class Pasillo1Scene extends Phaser.Scene {
 		this.cameras.main.startFollow(this.player, true)
 
 		//Dialgos
+		this.cameras.main.once("followupdate", ()=>{
+			this.dialogos.init();
+			this.dialogos.setText("Me han dado las llaves de la habitacion 510. Deberia buscarla...", true)
+		}, {once: true})
 		
-		this.dialogos.init();
-		this.dialogos.setText("Me han dado las llaves de la habitacion 510. Deberia buscarla...", true)
 		
 	}
 
@@ -118,7 +120,7 @@ export default class Pasillo1Scene extends Phaser.Scene {
             this.scene.start('Pasillo2Scene');
         }
 
-		if(!this.player.isStopped()){
+		if(!this.player.isStopped() && this.dialogos.dialog != "" && this.dialogos.visible){
 			this.dialogos.moveWindow();
 		}
 
