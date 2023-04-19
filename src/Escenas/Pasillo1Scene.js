@@ -99,10 +99,12 @@ export default class Pasillo1Scene extends Phaser.Scene {
 		//this.cameras.main.centerOn(this.player.x, this.player.y)
 		this.cameras.main.startFollow(this.player, true)
 
-		//Dialgos
+		//Añade un dialogo al inicio de una escena
+		//Es necesario porque si no la camara todavia no sigue al player y no muestra el dialogo en la posicion correcta
 		this.cameras.main.once("followupdate", ()=>{
-			this.dialogos.init();
-			this.dialogos.setText("Me han dado las llaves de la habitacion 510. Deberia buscarla...", true)
+			let texts = ["Me han dado las llaves de la habitacion 510. Deberia buscarla...", "Segundo texto seguido"]
+			this.dialogos.addLongTexts(texts)					
+			//this.dialogos.setText("Me han dado las llaves de la habitacion 510. Deberia buscarla...", true)
 		}, {once: true})
 		
 		
@@ -123,6 +125,7 @@ export default class Pasillo1Scene extends Phaser.Scene {
 		if(!this.player.isStopped() && this.dialogos.dialog != "" && this.dialogos.visible){
 			this.dialogos.moveWindow();
 		}
+		
 
 	}
 	

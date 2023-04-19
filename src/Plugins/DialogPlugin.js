@@ -3,7 +3,7 @@ export default class DialogPlugin {
         // the scene that owns the plugin
         this.scene = scene;
         this.systems = scene.sys;
-
+        this.longDialogs = false
     };
     // Initialize the dialog modal
     init(opts) {
@@ -75,8 +75,15 @@ export default class DialogPlugin {
         this.graphics = this.scene.add.graphics();
         this._createOuterWindow(dimensions.x, dimensions.y, dimensions.rectWidth, dimensions.rectHeight);
         this._createInnerWindow(dimensions.x, dimensions.y, dimensions.rectWidth, dimensions.rectHeight);
-        this._createCloseModalButton();
-        this._createCloseModalButtonBorder();
+
+        if(this.longDialogs){
+            this._createContinueText()
+        }
+        else{
+            this._createCloseModalButton();
+            this._createCloseModalButtonBorder();
+        }
+       
     }
     // Creates the close dialog window button
     _createCloseModalButton() {
@@ -102,6 +109,32 @@ export default class DialogPlugin {
         });
 
     }
+
+    _createContinueText() {
+        var self = this;
+        this.closeBtn = this.scene.make.text({
+            x: this.scene.cameras.main.midPoint.x + (this.scene.cameras.main.displayWidth/2) - this.padding - 45,
+            y:  this.scene.cameras.main.midPoint.y + (this.scene.cameras.main.displayHeight / 2) - this.padding + 5,
+            text: 'Siguiente',
+            style: {
+                font: 'bold 9px Arial',
+                fill: this.closeBtnColor
+            }
+        });
+        this.closeBtn.setInteractive();
+        this.closeBtn.on('pointerover', function () {
+            this.setTint(0xff0000);
+        });
+        this.closeBtn.on('pointerout', function () {
+            this.clearTint();
+        });
+        this.closeBtn.on('pointerdown', function () {
+            self._nextDialog()
+        });
+
+    }
+
+    
     _createCloseModalButtonBorder() {
         var x = this.scene.cameras.main.midPoint.x + (this.scene.cameras.main.displayWidth/2) - this.padding - 20;
         var y = this.scene.cameras.main.midPoint.y + (this.scene.cameras.main.displayHeight / 2) - this.windowHeight - this.padding +20;
@@ -142,7 +175,7 @@ export default class DialogPlugin {
             y,
             text,
             style: {
-                wordWrap: { width: (this.scene.cameras.main.displayWidth) - (this.padding * 2) - 25 }
+                wordWrap: { width: (this.scene.cameras.main.displayWidth) - (this.padding * 2) - 25}
             }
         });
     }
@@ -155,14 +188,32 @@ export default class DialogPlugin {
         }
     }
 
-    moveWindow(){
+    _destroyWindow(){
         this.closeBtn.destroy()
         this.graphics.destroy()
-        this._createWindow()
-        this.setText(this.dialog.join(""), false)
-         
-        console.log(this.dialog.join(""))
     }
 
+    moveWindow(){
+        this._destroyWindow()
+        this._createWindow()
+        this.setText(this.dialog.join(""), false)
+    }
+
+    //Funcion que muesta textos largos con varias ventanas
+    // texts = { texto1, texto2...}
+    addLongTexts(texts){
+        this.texts = texts
+        this.longDialogs = true
+        this.init()
+        this._nextDialog()
+    }
+
+    _nextDialog(){
+        if(this.texts.length === 1) this.longDialogs = false;
+        this._destroyWindow()
+        this._createWindow()
+        this.setText(this.texts[0], true)
+        this.texts.shift()        
+    }
 
 }
