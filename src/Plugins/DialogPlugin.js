@@ -208,6 +208,13 @@ export default class DialogPlugin {
         this._nextDialog()
     }
 
+    addSimpleText(text, animate){
+        this.longDialogs = false;
+        this.init()
+        this._createWindow()
+        this.setText(text, animate)
+    }
+
     _nextDialog(){
         if(this.texts.length === 1) this.longDialogs = false;
         this._destroyWindow()
