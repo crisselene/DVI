@@ -15,8 +15,6 @@ export default class IntroScene extends Phaser.Scene{
 
     create(){
         var vid = this.add.video(400, 300, 'introVideo');
-        vid.play(false);
-        vid.setPaused(false);
         this.config.skipKeys.forEach((key, i) => {
             this.keyObjects[i] = this.input.keyboard.addKey(key)
             this.keyObjects[i].once('down', () => {
@@ -26,6 +24,7 @@ export default class IntroScene extends Phaser.Scene{
             })
         })
         vid.on('complete', this.changescene, this);
+        vid.play(false);
     }
 
     changescene(){
