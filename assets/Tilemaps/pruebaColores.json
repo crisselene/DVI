@@ -1712,7 +1712,7 @@
                 },
              "501":
                 {
-                 "collides":false
+                 "collides":true
                 },
              "502":
                 {
@@ -1724,7 +1724,7 @@
                 },
              "504":
                 {
-                 "collides":false
+                 "collides":true
                 },
              "505":
                 {
@@ -1736,7 +1736,7 @@
                 },
              "507":
                 {
-                 "collides":false
+                 "collides":true
                 },
              "508":
                 {
@@ -1752,7 +1752,7 @@
                 },
              "510":
                 {
-                 "collides":false
+                 "collides":true
                 },
              "511":
                 {
@@ -1764,7 +1764,7 @@
                 },
              "513":
                 {
-                 "collides":false
+                 "collides":true
                 },
              "514":
                 {
@@ -1776,7 +1776,7 @@
                 },
              "516":
                 {
-                 "collides":false
+                 "collides":true
                 },
              "517":
                 {
