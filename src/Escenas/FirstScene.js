@@ -106,7 +106,7 @@ export default class FirstScene extends Phaser.Scene {
 
 
 			if (v1.distance(v2) < 18)
-				this.scene.start("Pasillo1Scene")
+				this.scene.start("ColorScene")
 		})
 	
 	
@@ -140,7 +140,6 @@ export default class FirstScene extends Phaser.Scene {
 		}
 
 		
-			
 		
 	}
 
