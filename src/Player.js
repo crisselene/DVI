@@ -49,6 +49,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
 		this.sKey = this.scene.input.keyboard.addKey('S'); //parar animación
 		this.dKey = this.scene.input.keyboard.addKey('D'); //derecha
         this.shiftKey = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SHIFT)
+        this.space = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
         
         this.setScale(2,2);
@@ -111,6 +112,14 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
         if (this.isStopped()){
             this.anims.stop()
         }
+
+       
+
+        if ( Phaser.Input.Keyboard.JustDown(this.space)){
+    
+            this.x = this.getRndInteger(20, 500)
+            this.y = this.getRndInteger(20, 500)
+        }
    
     
     }
@@ -127,4 +136,8 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
         }
         else if (this.anims.currentAnim) this.anims.currentAnim.frameRate = 10
     }
+
+     getRndInteger(min, max) {
+        return Math.floor(Math.random() * (max - min) ) + min;
+      }
 }
