@@ -11,22 +11,22 @@ export default class PuertasColoresScene extends Phaser.Scene {
 		
 		this.load.image("tiles", "assets/Tilesets/Tiles.png");
 		this.load.image("props", "assets/Tilesets/Props.png");
-		this.load.tilemapTiledJSON('map1','assets/Tilemaps/pasilloPuertas.json');
+		this.load.tilemapTiledJSON('PuertasColores','assets/Tilemaps/pasilloPuertas.json');
 		this.load.spritesheet("player", "assets/player/player.png", {frameWidth: 16, frameHeight:24});
-		this.load.image("vision", "assets/backgrounds/vision.png")
 	}
 
 	create() {			
 
 		//mapeado
-		const map = this.make.tilemap({key: "map1", tileWidth: 32, tileHeight:32 });
+		const map = this.make.tilemap({key: "PuertasColores", tileWidth: 32, tileHeight:32 });
 		const tileset = map.addTilesetImage("paredes","tiles");
+		const tileset3 = map.addTilesetImage("colores","tiles");
 		const tileset2 = map.addTilesetImage("muebles","props");
 		
 		const layer = map.createLayer("layer1", tileset, 0, 0);
 		const paredesLayer = map.createLayer("paredes", tileset, 0, 0);
 		const mueblesLayer = map.createLayer("muebles", tileset2, 0, 0);
-		const coloresLayer = map.createLayer("colores", tileset, 0, 0);
+		const coloresLayer = map.createLayer("colores", tileset3, 0, 0);
 		
 
 		//resize mapeado

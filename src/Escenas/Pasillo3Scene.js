@@ -1,9 +1,11 @@
 import Player from "../Player.js";
-
+import DialogPlugin from "../Plugins/DialogPlugin.js";
 
 export default class Pasillo3Scene extends Phaser.Scene {
 	constructor() {
 		super('Pasillo3Scene')
+		this.dialogos = new DialogPlugin(this)
+		this.contador = 0;
 	}
 	preload() {
 		//<a href="https://www.freepik.es/foto-gratis/luz-puerta-abierta_19139596.htm#from_view=detail_alsolike">Imagen de rawpixel.com</a> en Freepik
@@ -103,10 +105,26 @@ export default class Pasillo3Scene extends Phaser.Scene {
 			this.vision.y = this.player.y
 		}*/
 
+		
+
 		if (Number(this.player.x.toPrecision(3)) >= 770){
 			console.log("salir")
             this.scene.start('Pasillo4Scene');
         }
+
+		if (Number(this.player.x.toPrecision(3)) <= 100){
+			
+			if(this.contador == 0 && !this.dialogos.visible){
+				this.dialogos.addSimpleText("Pero si ya no hay mas habitaciones, no entiendo nada...")
+				this.contador++;
+			}
+			else if (!this.dialogos.visible)
+				this.dialogos.addSimpleText("Igual deberia volver atras...")		
+        }
+
+		if(!this.player.isStopped() && this.dialogos.dialog != "" && this.dialogos.visible){
+			this.dialogos.moveWindow();
+		}
 
 	}
 	
