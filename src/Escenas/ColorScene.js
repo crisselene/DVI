@@ -160,7 +160,7 @@ export default class ColorScene extends Phaser.Scene{
         else{
            
             if (!this.dialogos.visible)
-                this.dialogos.addSimpleText("Vaya combinación incorrecta. Debería buscar pistas coloridas.", true)
+                this.dialogos.addSimpleText("Vaya, combinación incorrecta... Debería buscar pistas coloridas.", true)
 
             setTimeout(() => {
                 this.contador = 0
