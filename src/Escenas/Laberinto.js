@@ -48,7 +48,7 @@ export default class Laberinto extends Phaser.Scene {
 		this.player = new Player(this, 400, 615);
 		this.player.play('subir', true)
 
-		this.fantasma = new Fantasma(this, 400, 530);
+		this.fantasma = new Fantasma(this, 400, 330);
 		this.fantasma.play('subirFantasma', true)
 
 
@@ -114,7 +114,7 @@ export default class Laberinto extends Phaser.Scene {
 		this.physics.add.collider(this.player, paredesLayer);
 		//this.physics.add.collider(this.player, mueblesLayer);
 		
-		
+		this.physics.add.collider(this.player, this.fantasma, ()=>{this.scene.start('PuertasColoresScene');}, null, this);
 
 		//camara
 		this.cameras.main.setBounds(0, 0, this.sys.canvas.width, this.sys.canvas.height);
