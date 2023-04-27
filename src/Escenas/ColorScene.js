@@ -131,8 +131,10 @@ export default class ColorScene extends Phaser.Scene{
 		    this.puertaLayer.displayHeight = this.sys.canvas.height;
         }
         else{
-            console.log("Error")
+           
             setTimeout(() => {
+                this.contador = 0
+                this.pulsado = -1
                 this.altares.forEach( e => {
                     e.setTexture("altarvacio")
                     e.setData("color", -1)
@@ -142,5 +144,12 @@ export default class ColorScene extends Phaser.Scene{
         }
 
  
+    }
+
+    update(){
+        
+        if (this.player.x > 650 && this.player.y < 50){
+            this.scene.start('OutroScene');
+        }
     }
 }
