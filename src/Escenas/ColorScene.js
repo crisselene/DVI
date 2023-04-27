@@ -19,6 +19,7 @@ export default class ColorScene extends Phaser.Scene{
         this.load.image("altar3", "assets/Tilesets/altar3.png")
         this.load.image("altar4", "assets/Tilesets/altar4.png")
         this.load.image("altar5", "assets/Tilesets/altar5.png")
+        this.load.image("vision", "assets/backgrounds/vision.png")
 
     }
 
@@ -111,6 +112,29 @@ export default class ColorScene extends Phaser.Scene{
             })
         })
 
+        this.vision = this.make.image({
+			x: this.player.x,
+			y: this.player.y,
+			key: "vision",
+			add: false
+		})
+
+		
+		this.vision.scale = 0.1 
+
+        const width = this.scale.width
+		const height = this.scale.height
+
+		const rt = this.make.renderTexture({
+			width, height
+		}, true)
+
+		rt.fill(0x000000, 0.8)
+	
+
+		rt.mask = new Phaser.Display.Masks.BitmapMask(this, this.vision)
+		rt.mask.invertAlpha = true
+
 
     }
 
@@ -147,7 +171,10 @@ export default class ColorScene extends Phaser.Scene{
     }
 
     update(){
-        
+        if (this.vision){
+			this.vision.x = this.player.x
+			this.vision.y = this.player.y
+		}
         if (this.player.x > 650 && this.player.y < 50){
             this.scene.start('OutroScene');
         }
