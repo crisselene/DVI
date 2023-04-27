@@ -130,7 +130,7 @@ export default class ColorScene extends Phaser.Scene{
 			width, height
 		}, true)
 
-		rt.fill(0x000000, 0.8)
+		rt.fill(0x000000, 0.7)
 	
 
 		rt.mask = new Phaser.Display.Masks.BitmapMask(this, this.vision)

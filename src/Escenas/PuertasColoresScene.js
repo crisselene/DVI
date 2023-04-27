@@ -13,6 +13,7 @@ export default class PuertasColoresScene extends Phaser.Scene {
 		this.load.image("props", "assets/Tilesets/Props.png");
 		this.load.tilemapTiledJSON('PuertasColores','assets/Tilemaps/pasilloPuertas.json');
 		this.load.spritesheet("player", "assets/player/player.png", {frameWidth: 16, frameHeight:24});
+		this.load.image("vision", "assets/backgrounds/vision.png")
 	}
 
 	create(data) {			
@@ -49,6 +50,29 @@ export default class PuertasColoresScene extends Phaser.Scene {
 			this.player.y = 255
 			this.player.play("bajar", true)
 		}
+
+		this.vision = this.make.image({
+			x: this.player.x,
+			y: this.player.y,
+			key: "vision",
+			add: false
+		})
+
+		
+		this.vision.scale = 0.1 
+
+		const width = this.scale.width
+		const height = this.scale.height
+
+		const rt = this.make.renderTexture({
+			width, height
+		}, true)
+
+		rt.fill(0x000000, 0.8)
+	
+
+		rt.mask = new Phaser.Display.Masks.BitmapMask(this, this.vision)
+		rt.mask.invertAlpha = true
 		
 		//collisions
 		this.player.setCollideWorldBounds(true);
@@ -84,6 +108,11 @@ export default class PuertasColoresScene extends Phaser.Scene {
 	update(){
 
 		let posicionesX= [138,236,454,558,668]
+
+		if (this.vision){
+			this.vision.x = this.player.x
+			this.vision.y = this.player.y
+		}
 
 		if ((Number(this.player.y.toPrecision(3)) <= 249 && Number(this.player.x.toPrecision(3))<= 300) ||
 			( Number(this.player.y.toPrecision(3)) <= 249 && Number(this.player.x.toPrecision(3))>= 390)){
