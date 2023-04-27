@@ -9,6 +9,7 @@ import Pasillo4Scene from './Escenas/Pasillo4Scene.js'
 import ColorScene from './Escenas/ColorScene.js'
 import Laberinto from './Escenas/Laberinto.js'
 import PuertasColoresScene from './Escenas/PuertasColoresScene.js'
+import OutroScene from './Escenas/OutroScene.js'
 const config = {
 	type: Phaser.AUTO,
 	parent: 'app',
@@ -17,7 +18,7 @@ const config = {
 	physics: {
 		default: 'arcade',
 	},
-	scene: [MainMenu, FirstScene, IntroScene, Pasillo1Scene,Pasillo2Scene,Pasillo3Scene,Pasillo4Scene, ColorScene, PuertasColoresScene, Laberinto],
+	scene: [MainMenu, FirstScene, IntroScene, Pasillo1Scene,Pasillo2Scene,Pasillo3Scene,Pasillo4Scene, ColorScene, PuertasColoresScene, Laberinto, OutroScene],
 }
 
 export default new Phaser.Game(config)

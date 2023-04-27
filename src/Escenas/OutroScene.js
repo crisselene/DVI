@@ -10,7 +10,7 @@ export default class OutroScene extends Phaser.Scene{
 	}
 
     preload(){
-		this.load.video('outroVideo', 'assets/video/outtroLogo.mp4', 'loadeddata', false, false);
+		this.load.video('outroVideo', 'assets/video/outroLogo.mp4', 'loadeddata', false, false);
     }
 
     create(){
