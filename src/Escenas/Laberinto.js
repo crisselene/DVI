@@ -130,12 +130,17 @@ export default class Laberinto extends Phaser.Scene {
 		
 	}
 
+	enemyFollows () {
+        this.physics.moveToObject(this.fantasma, this.player, 100);
+    }
+
 	update(){
 		//this.cameras.main.centerOn(this.player.x, this.player.y)
 		/*if (this.vision){
 			this.vision.x = this.player.x
 			this.vision.y = this.player.y
 		}*/
+		this.enemyFollows();
 		
 		if (this.vision){
 			this.vision.x = this.player.x
