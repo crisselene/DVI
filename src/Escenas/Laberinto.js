@@ -13,8 +13,8 @@ export default class Laberinto extends Phaser.Scene {
 		//this.load.image('mainroom', 'assets/Tilemaps/mainRoom.png');
 		//this.load.tilemapTiledJSON('mapa', '/assets/Tilemaps/mainRoom.json' );
 		
-		this.load.image("tiles", "assets/Tilesets/DungeonTileset.png");
-		this.load.tilemapTiledJSON('map1','assets/Tilemaps/laberinto.json');
+		this.load.image("tilesLab", "assets/Tilesets/DungeonTileset.png");
+		this.load.tilemapTiledJSON('mapLab','assets/Tilemaps/laberinto.json');
 		this.load.spritesheet("player", "assets/player/player.png", {frameWidth: 16, frameHeight:24});
 		this.load.image("vision", "assets/backgrounds/vision.png")
 		
@@ -26,8 +26,8 @@ export default class Laberinto extends Phaser.Scene {
 	
 
 		//mapeado
-		const map = this.make.tilemap({key: "map1", tileWidth: 32, tileHeight:32 });
-		const tileset = map.addTilesetImage("DungeonTileset","tiles");
+		const map = this.make.tilemap({key: "mapLab", tileWidth: 32, tileHeight:32 });
+		const tileset = map.addTilesetImage("DungeonTileset","tilesLab");
 		
 		const layer = map.createLayer("layer1", tileset, 0, 0);
 		const paredesLayer = map.createLayer("paredes", tileset, 0, 0);
@@ -43,7 +43,32 @@ export default class Laberinto extends Phaser.Scene {
 		mueblesLayer.displayHeight = this.sys.canvas.height;
 				
 		//player
-		this.player = new Player(this, 750, 315);
+		this.player = new Player(this, 400, 615);
+		this.player.play('subir', true)
+
+
+		this.vision = this.make.image({
+			x: this.player.x,
+			y: this.player.y,
+			key: "vision",
+			add: false
+		})
+
+		
+		this.vision.scale = 0.1 
+
+		const width = this.scale.width
+		const height = this.scale.height
+
+		const rt = this.make.renderTexture({
+			width, height
+		}, true)
+
+		rt.fill(0x000000, 0.8)
+	
+
+		rt.mask = new Phaser.Display.Masks.BitmapMask(this, this.vision)
+		rt.mask.invertAlpha = true
 
 		/*
 		this.vision = this.make.image({
@@ -94,9 +119,7 @@ export default class Laberinto extends Phaser.Scene {
 
 		//Añade un dialogo al inicio de una escena
 		//Es necesario porque si no la camara todavia no sigue al player y no muestra el dialogo en la posicion correcta
-		this.cameras.main.once("followupdate", ()=>{
-			let texts = ["Me han dado las llaves de la habitacion 510. Deberia buscarla...", "Segundo texto seguido"]
-			this.dialogos.addLongTexts(texts)					
+		this.cameras.main.once("followupdate", ()=>{				
 			//this.dialogos.setText("Me han dado las llaves de la habitacion 510. Deberia buscarla...", true)
 		}, {once: true})
 		
@@ -109,16 +132,18 @@ export default class Laberinto extends Phaser.Scene {
 			this.vision.x = this.player.x
 			this.vision.y = this.player.y
 		}*/
+		
+		if (this.vision){
+			this.vision.x = this.player.x
+			this.vision.y = this.player.y
+		}
 
-		if (Number(this.player.x.toPrecision(3)) <= 60){
+		
+		if (Number(this.player.x.toPrecision(3)) <= 25 && Number(this.player.y.toPrecision(3)) >= 234 && Number(this.player.y.toPrecision(3)) <= 306 ){
 			console.log("salir")
-            this.scene.start('Pasillo2Scene');
+            this.scene.start('PuertasColoresScene');
         }
 
-		if(!this.player.isStopped() && this.dialogos.dialog != "" && this.dialogos.visible){
-			this.dialogos.moveWindow();
-		}
-		
 
 	}
 	
