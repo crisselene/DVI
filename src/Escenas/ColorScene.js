@@ -177,7 +177,6 @@ export default class ColorScene extends Phaser.Scene{
 			this.vision.y = this.player.y
 		}
 
-        console.log(this.player.x + " " + this.player.y )
 
         if (this.player.x < 143 && this.player.y < 50){
             this.scene.start("PuertasColoresScene", {position: true})
