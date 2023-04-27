@@ -1,3 +1,4 @@
+import Fantasma from "../Fantasma.js";
 import Player from "../Player.js";
 import DialogPlugin from "../Plugins/DialogPlugin.js";
 //import Pasillo2Scene from './Pasillo2Scene';
@@ -16,8 +17,9 @@ export default class Laberinto extends Phaser.Scene {
 		this.load.image("tilesLab", "assets/Tilesets/DungeonTileset.png");
 		this.load.tilemapTiledJSON('mapLab','assets/Tilemaps/laberinto.json');
 		this.load.spritesheet("player", "assets/player/player.png", {frameWidth: 16, frameHeight:24});
+		this.load.spritesheet("fantasma", "assets/player/fantasma.png", {frameWidth: 16, frameHeight:24});
 		this.load.image("vision", "assets/backgrounds/vision.png")
-		
+		this.load.image("altar0", "assets/Tilesets/altar0.png")
 
 	}
 
@@ -45,6 +47,9 @@ export default class Laberinto extends Phaser.Scene {
 		//player
 		this.player = new Player(this, 400, 615);
 		this.player.play('subir', true)
+
+		this.fantasma = new Fantasma(this, 400, 530);
+		this.fantasma.play('subirFantasma', true)
 
 
 		this.vision = this.make.image({
@@ -123,7 +128,6 @@ export default class Laberinto extends Phaser.Scene {
 			//this.dialogos.setText("Me han dado las llaves de la habitacion 510. Deberia buscarla...", true)
 		}, {once: true})
 		
-		
 	}
 
 	update(){
@@ -137,6 +141,8 @@ export default class Laberinto extends Phaser.Scene {
 			this.vision.x = this.player.x
 			this.vision.y = this.player.y
 		}
+
+	
 
 		
 		if (Number(this.player.x.toPrecision(3)) <= 25 && Number(this.player.y.toPrecision(3)) >= 234 && Number(this.player.y.toPrecision(3)) <= 306 ){
