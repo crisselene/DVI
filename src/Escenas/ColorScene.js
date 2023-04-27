@@ -1,8 +1,10 @@
 import Player from "../Player.js";
+import DialogPlugin from "../Plugins/DialogPlugin.js";
 
 export default class ColorScene extends Phaser.Scene{
     constructor(){
         super("ColorScene")
+        this.dialogos = new DialogPlugin(this)
     }
 
     preload(){
@@ -130,7 +132,7 @@ export default class ColorScene extends Phaser.Scene{
 			width, height
 		}, true)
 
-		rt.fill(0x000000, 0.8)
+		rt.fill(0x000000, 0.7)
 	
 
 		rt.mask = new Phaser.Display.Masks.BitmapMask(this, this.vision)
@@ -157,6 +159,9 @@ export default class ColorScene extends Phaser.Scene{
         }
         else{
            
+            if (!this.dialogos.visible)
+                this.dialogos.addSimpleText("Vaya, combinación incorrecta... Debería buscar pistas coloridas.", true)
+
             setTimeout(() => {
                 this.contador = 0
                 this.pulsado = -1
@@ -186,5 +191,10 @@ export default class ColorScene extends Phaser.Scene{
         if (this.player.x > 650 && this.player.y < 50){
             this.scene.start('OutroScene');
         }
+
+        if(!this.player.isStopped() && this.dialogos.dialog != "" && this.dialogos.visible){
+			this.dialogos.moveWindow();
+		}
     }
+
 }
