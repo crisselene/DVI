@@ -22,13 +22,12 @@ export default class PuertasColoresScene extends Phaser.Scene {
 		//mapeado
 		const map = this.make.tilemap({key: "PuertasColores", tileWidth: 32, tileHeight:32 });
 		const tileset = map.addTilesetImage("paredes","tiles");
-		const tileset3 = map.addTilesetImage("colores","tiles");
 		const tileset2 = map.addTilesetImage("muebles","props");
 		
 		const layer = map.createLayer("layer1", tileset, 0, 0);
 		const paredesLayer = map.createLayer("paredes", tileset, 0, 0);
 		const mueblesLayer = map.createLayer("muebles", tileset2, 0, 0);
-		const coloresLayer = map.createLayer("colores", tileset3, 0, 0);
+		const coloresLayer = map.createLayer("colores", tileset, 0, 0);
 		
 
 		//resize mapeado
@@ -74,7 +73,7 @@ export default class PuertasColoresScene extends Phaser.Scene {
 		//Es necesario porque si no la camara todavia no sigue al player y no muestra el dialogo en la posicion correcta
 		this.cameras.main.once("followupdate", ()=>{
 			if (!data.position)
-				this.dialogos.addSimpleText("Que raro, todo tan oscuro y aqui de repente hay muchos colores...", true)					
+				this.dialogos.addSimpleText("Que raro, todo tan oscuro y aquí de repente hay muchos colores...", true)					
 			//this.dialogos.setText("Me han dado las llaves de la habitacion 510. Deberia buscarla...", true)
 		}, {once: true})
 		
@@ -94,7 +93,9 @@ export default class PuertasColoresScene extends Phaser.Scene {
         }
 		else if (Number(this.player.y.toPrecision(3)) <= 249 && Number(this.player.x.toPrecision(3))>= 300 &&  Number(this.player.x.toPrecision(3))<= 390){
 			console.log("Puerta 1")
+			this.dialogos = new DialogPlugin(this)
             this.scene.start('ColorScene')
+			
         }
 
 
