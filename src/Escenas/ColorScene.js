@@ -50,7 +50,8 @@ export default class ColorScene extends Phaser.Scene{
     
 		
 		//player
-		this.player = new Player(this, 370, 500);
+		this.player = new Player(this, 132, 92);
+        this.player.play("bajar", true)
         this.player.setCollideWorldBounds(true);
         this.player.setDepth(6)
 
@@ -175,6 +176,14 @@ export default class ColorScene extends Phaser.Scene{
 			this.vision.x = this.player.x
 			this.vision.y = this.player.y
 		}
+
+        console.log(this.player.x + " " + this.player.y )
+
+        if (this.player.x < 143 && this.player.y < 50){
+            this.scene.start("PuertasColoresScene", {position: true})
+        }
+
+
         if (this.player.x > 650 && this.player.y < 50){
             this.scene.start('OutroScene');
         }

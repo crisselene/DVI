@@ -15,8 +15,10 @@ export default class PuertasColoresScene extends Phaser.Scene {
 		this.load.spritesheet("player", "assets/player/player.png", {frameWidth: 16, frameHeight:24});
 	}
 
-	create() {			
+	create(data) {			
 
+
+		
 		//mapeado
 		const map = this.make.tilemap({key: "PuertasColores", tileWidth: 32, tileHeight:32 });
 		const tileset = map.addTilesetImage("paredes","tiles");
@@ -40,7 +42,13 @@ export default class PuertasColoresScene extends Phaser.Scene {
 		coloresLayer.displayHeight = this.sys.canvas.height;
 				
 		//player
-		this.player = new Player(this, 750, 315);		
+		this.player = new Player(this, 750, 315);	
+		
+		if (data.position){
+			this.player.x = 345
+			this.player.y = 255
+			this.player.play("bajar", true)
+		}
 		
 		//collisions
 		this.player.setCollideWorldBounds(true);
@@ -65,7 +73,8 @@ export default class PuertasColoresScene extends Phaser.Scene {
 		//Añade un dialogo al inicio de una escena
 		//Es necesario porque si no la camara todavia no sigue al player y no muestra el dialogo en la posicion correcta
 		this.cameras.main.once("followupdate", ()=>{
-			this.dialogos.addSimpleText("Que raro, todo tan oscuro y aqui de repente hay muchos colores...", true)					
+			if (!data.position)
+				this.dialogos.addSimpleText("Que raro, todo tan oscuro y aqui de repente hay muchos colores...", true)					
 			//this.dialogos.setText("Me han dado las llaves de la habitacion 510. Deberia buscarla...", true)
 		}, {once: true})
 		
@@ -85,7 +94,7 @@ export default class PuertasColoresScene extends Phaser.Scene {
         }
 		else if (Number(this.player.y.toPrecision(3)) <= 249 && Number(this.player.x.toPrecision(3))>= 300 &&  Number(this.player.x.toPrecision(3))<= 390){
 			console.log("Puerta 1")
-            this.scene.start('ColoresSecene')
+            this.scene.start('ColorScene')
         }
 
 
