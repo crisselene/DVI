@@ -1,10 +1,15 @@
 
 import Player from "../Player.js";
+import DialogPlugin from "../Plugins/DialogPlugin.js";
 
 
 export default class FirstScene extends Phaser.Scene {
 	constructor() {
 		super('FirstScene')
+		this.dialogos = new DialogPlugin(this)
+		this.dialogoPeriodico = false
+		this.dialogoLibro = false
+		this.dialogoCama = false
 	}
 	preload() {
 		//<a href="https://www.freepik.es/foto-gratis/luz-puerta-abierta_19139596.htm#from_view=detail_alsolike">Imagen de rawpixel.com</a> en Freepik
@@ -139,7 +144,41 @@ export default class FirstScene extends Phaser.Scene {
 			this.vision.y = this.player.y
 		}
 
-		
+		if (Number(this.player.x.toPrecision(3)) <= 199 && Number(this.player.x.toPrecision(3))>= 97
+		 &&  Number(this.player.y.toPrecision(3))<= 355 && Number(this.player.y.toPrecision(3))>= 275 
+		 && !this.dialogos.visible && !this.dialogoPeriodico){
+			let texts = ["“ Diario Zaragoza: se quema la quinta planta del Hotel Corona de Aragón causando 83 muertos.” ", "¿Este hotel se quemó? que espeluznante… "]
+			this.dialogos.addLongTexts(texts)
+			this.dialogoPeriodico = true;
+        }
+
+		if (Number(this.player.x.toPrecision(3)) <= 469 && Number(this.player.x.toPrecision(3))>= 359
+		 &&  Number(this.player.y.toPrecision(3))<= 115 && !this.dialogos.visible && !this.dialogoLibro){
+			this.dialogos.addSimpleText("Un viejo libro...")
+			this.dialogoLibro = true
+        }
+
+		if (Number(this.player.x.toPrecision(3)) <= 706 && Number(this.player.x.toPrecision(3))>= 608
+		 &&  Number(this.player.y.toPrecision(3))<= 330 && Number(this.player.y.toPrecision(3))>= 228 
+		 && !this.dialogos.visible && !this.dialogoCama){
+			let texts = ["Hay marcas en el suelo como si alguien hubiera movido la cama.", "Creo que esta cama se podría empujar."]
+			this.dialogos.addLongTexts(texts)
+			this.dialogoCama = true;
+        }
+
+		if (Number(this.player.x.toPrecision(3)) <= 415 && Number(this.player.x.toPrecision(3))>= 343
+		 &&  Number(this.player.y.toPrecision(3))>= 545 && !this.dialogos.visible){
+			this.dialogos.addSimpleText("Vaya, está cerrada.")
+        }	
+
+		if(!this.player.isStopped()){
+			console.log("X = " + Number(this.player.x.toPrecision(3)))
+			console.log("Y = " + Number(this.player.y.toPrecision(3)))
+		}
+
+		if(!this.player.isStopped() && this.dialogos.dialog != "" && this.dialogos.visible){
+			this.dialogos.moveWindow();
+		}
 		
 	}
 
