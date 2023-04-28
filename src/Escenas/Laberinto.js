@@ -114,7 +114,7 @@ export default class Laberinto extends Phaser.Scene {
 		this.physics.add.collider(this.player, paredesLayer);
 		//this.physics.add.collider(this.player, mueblesLayer);
 		
-		this.physics.add.collider(this.player, this.fantasma, ()=>{this.scene.start('PuertasColoresScene');}, null, this);
+		this.physics.add.collider(this.player, this.fantasma, ()=>{this.scene.start('PreLaberinto', {muerto:true});}, null, this);
 
 		//camara
 		this.cameras.main.setBounds(0, 0, this.sys.canvas.width, this.sys.canvas.height);
