@@ -24,6 +24,7 @@ export default class FirstScene extends Phaser.Scene {
 		this.load.image("vision", "assets/backgrounds/vision.png")
 		this.load.image("cama", "assets/Tilesets/cama.png")
 		this.load.image("escalera", "assets/Tilesets/escalerascut.png")
+		this.load.image("halloween", "assets/Tilesets/11_Halloween_16x16.png")
 	}
 
 	create() {		
@@ -35,12 +36,13 @@ export default class FirstScene extends Phaser.Scene {
 		const tileset = map.addTilesetImage("paredes","tiles");
 		const tileset2 = map.addTilesetImage("muebles","props");
 		const tilesetAlfombras = map.addTilesetImage("alfombras","alfombras");
+		const tilesetHalloween = map.addTilesetImage("objetos","halloween");
 		
 		const layer = map.createLayer("layer1", tileset, 0, 0);
 		const alfombraLayer = map.createLayer("alfombras", tilesetAlfombras, 0, 0);
 		const paredesLayer = map.createLayer("paredes", tileset, 0, 0);
 		const mueblesLayer = map.createLayer("muebles", tileset2, 0, 0);
-		
+		const objetosLayer = map.createLayer("objetos", tilesetHalloween, 0, 0);		
 		
 
 		//resize mapeado
@@ -52,7 +54,8 @@ export default class FirstScene extends Phaser.Scene {
 		mueblesLayer.displayHeight = this.sys.canvas.height;
 		alfombraLayer.displayWidth = this.sys.canvas.width;
 		alfombraLayer.displayHeight = this.sys.canvas.height;
-	
+		objetosLayer.displayWidth = this.sys.canvas.width;
+		objetosLayer.displayHeight = this.sys.canvas.height;
 		
 		//player
 		this.player = new Player(this, 370, 500);
@@ -86,9 +89,9 @@ export default class FirstScene extends Phaser.Scene {
 
 		mueblesLayer.setCollisionByProperty({collides:true}); 
 		paredesLayer.setCollisionByProperty({collides:true});
-		
+		objetosLayer.setCollisionByProperty({collides:true});
 	
-		this.physics.add.collider(this.player, [mueblesLayer, paredesLayer]);
+		this.physics.add.collider(this.player, [mueblesLayer, paredesLayer, objetosLayer]);
 		this.physics.add.collider(this.player, this.cama, () => {
 			
 	
@@ -111,7 +114,7 @@ export default class FirstScene extends Phaser.Scene {
 
 
 			if (v1.distance(v2) < 18)
-				this.scene.start("ColorScene")
+				this.scene.start("PreLaberinto")
 		})
 	
 	

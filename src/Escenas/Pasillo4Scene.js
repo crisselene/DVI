@@ -47,8 +47,8 @@ export default class Pasillo4Scene extends Phaser.Scene {
 		alfombraLayer.displayHeight = this.sys.canvas.height;
 		
 		//player
-		this.player = new Player(this, 90, 315);
-
+		this.player = new Player(this, 60, 315);
+		this.player.setFlip(true, false);
 		/*
 		this.vision = this.make.image({
 			x: this.player.x,

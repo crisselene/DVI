@@ -32,9 +32,9 @@ export default class PreLaberinto extends Phaser.Scene {
 		this.load.tilemapTiledJSON('mapPreLab','assets/Tilemaps/prelaberinto.json');
 		this.load.spritesheet("player", "assets/player/player.png", {frameWidth: 16, frameHeight:24});
 		this.load.image("vision", "assets/backgrounds/vision.png")
-		this.load.image("furniture", "assets/Tilesets/Furniture Pack/Sheets/furniture-24x24-5x4-sheet.png")
-		this.load.image("altares", "assets/Tilesets/Furniture Pack/Sheets/shrines-altars-24x24-5x4-sheet.png")
-		this.load.image("ventana", "assets/Tilesets/ventana.png")
+		this.load.image("furniturePRELAB", "assets/Tilesets/Furniture Pack/Sheets/furniture-24x24-5x4-sheet.png")
+		this.load.image("altaresPRELAB", "assets/Tilesets/Furniture Pack/Sheets/shrines-altars-24x24-5x4-sheet.png")
+		//this.load.image("ventana", "assets/Tilesets/ventana.png")
 		this.load.image("halloween", "assets/Tilesets/11_Halloween_16x16.png")
 		
 	}
@@ -46,9 +46,9 @@ export default class PreLaberinto extends Phaser.Scene {
 		
 		const tileset = mapPreLab.addTilesetImage("paredes","tiles");
 		const tileset2 = mapPreLab.addTilesetImage("muebles","props");
-		const tilesetFurniture = mapPreLab.addTilesetImage("furniture-24x24-5x4-sheet", "furniture");
-		const tilesetAltares = mapPreLab.addTilesetImage("shrines-altars-24x24-5x4-sheet", "altares");
-		const tilesetVentana = mapPreLab.addTilesetImage("ventana", "ventana");
+		const tilesetFurniture = mapPreLab.addTilesetImage("furniture-24x24-5x4-sheet", "furniturePRELAB");
+		const tilesetAltares = mapPreLab.addTilesetImage("shrines-altars-24x24-5x4-sheet", "altaresPRELAB");
+		//const tilesetVentana = mapPreLab.addTilesetImage("ventana", "ventana");
 		const tilesetAlfombras = mapPreLab.addTilesetImage("alfombras","alfombras");
 		const tilesetHalloween = mapPreLab.addTilesetImage("halloween","halloween");
 		
@@ -56,7 +56,7 @@ export default class PreLaberinto extends Phaser.Scene {
 		const alfombraLayer = mapPreLab.createLayer("alfombras", tilesetAlfombras, 0, 0);
 		const paredesLayer = mapPreLab.createLayer("paredes", tileset, 0, 0);
 		const mueblesLayer = mapPreLab.createLayer("muebles", [tileset2,tilesetFurniture], 0, 0);
-		const objetosLayer = mapPreLab.createLayer("objetos", [tileset2,tilesetFurniture,tilesetAltares,tilesetVentana, tilesetHalloween], 0, 0);
+		const objetosLayer = mapPreLab.createLayer("objetos", [tileset2,tilesetFurniture,tilesetAltares,tilesetHalloween], 0, 0);
 		
 		
 		//resize mapeado
@@ -148,10 +148,7 @@ export default class PreLaberinto extends Phaser.Scene {
 
 
 		// MOSTRAR SITAUCIÓN DEL PLAYERs
-		if(!this.player.isStopped()){
-			//console.log("X = " + Number(this.player.x.toPrecision(3)))
-			//console.log("Y = " + Number(this.player.y.toPrecision(3)))
-		}
+
 
 		if(!this.player.isStopped() && this.dialogos.dialog != "" && this.dialogos.visible){
 			this.dialogos.moveWindow();
