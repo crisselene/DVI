@@ -19,6 +19,9 @@ export default class Pasillo1Scene extends Phaser.Scene {
 		this.load.tilemapTiledJSON('map1','assets/Tilemaps/pasillo1.json');
 		this.load.spritesheet("player", "assets/player/player.png", {frameWidth: 16, frameHeight:24});
 		this.load.image("vision", "assets/backgrounds/vision.png")
+		this.load.audio('theme', [
+            'assets/audio/Lost.m4a'
+        ]);
 		
 
 	}
@@ -52,6 +55,8 @@ export default class Pasillo1Scene extends Phaser.Scene {
 		//player
 		this.player = new Player(this, 750, 315);
 
+		this.song = this.sound.add('theme', {volume: 0.1, loop:true});
+		this.song.play();
 		/*
 		this.vision = this.make.image({
 			x: this.player.x,
