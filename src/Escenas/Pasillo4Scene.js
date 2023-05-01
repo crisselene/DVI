@@ -6,6 +6,7 @@ export default class Pasillo4Scene extends Phaser.Scene {
 	constructor() {
 		super('Pasillo4Scene')
 		this.dialogos = new DialogPlugin(this)
+		this.dialogoFin = false
 	}
 	preload() {
 		//<a href="https://www.freepik.es/foto-gratis/luz-puerta-abierta_19139596.htm#from_view=detail_alsolike">Imagen de rawpixel.com</a> en Freepik
@@ -116,9 +117,9 @@ export default class Pasillo4Scene extends Phaser.Scene {
 
 		if (Number(this.player.x.toPrecision(3)) >= 300){
 			
-			if(!this.dialogos.visible){
+			if(!this.dialogos.visible && !this.dialogoFin){
 				this.dialogos.addSimpleText("Que mal rollo!!")
-				
+				this.dialogoFin = true
 			}		
         }
 	}
