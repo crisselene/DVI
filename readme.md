@@ -1,7 +1,7 @@
 # 510 por BooGames
 ## Proyecto universitario (UCM) para DVI
 
-[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://github.com/crisselene/DVI)
+![GitHub](https://img.shields.io/github/license/dropbox/dropbox-sdk-java)
 
 >510 es un videojuego de puzzles creado para la asignatura de "DESARROLLO DE VIDEOJUEGOS MEDIANTE 
 >TECNOLOGÍAS WEB 22-23" impartida en la Universidad Complutense de Madrid bajo una compañia 
@@ -20,7 +20,14 @@
 
 ## Capturas de Pantalla
 
-![Captura1](https://gamedevacademy.org/wp-content/uploads/2018/05/Cross-Road-Game.jpg.webp)
+![Menú](https://user-images.githubusercontent.com/94256335/235437091-2b2026c8-c0c2-4d51-a895-29fabc66accf.png)
+![Intro](https://user-images.githubusercontent.com/94256335/235437081-c36a9455-7d14-4ba7-9c0f-e64e5ae67b39.png)
+![Intro](https://user-images.githubusercontent.com/94256335/235437084-b2649209-bf6d-4445-9bc6-82ec2fe8bff4.png)
+![Pasillo](https://user-images.githubusercontent.com/94256335/235437085-4f3d5de8-150f-4190-813c-7b238fb7067d.png)
+![Tinieblas](https://user-images.githubusercontent.com/94256335/235437087-e4ff98a6-a318-4bd7-9d06-b61decce306c.png)
+![Mazmorra](https://user-images.githubusercontent.com/94256335/235437089-195d2435-a219-4885-b031-2ea1986f569c.png)
+
+
 
 ## Tecnologías
 
