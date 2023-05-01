@@ -112,14 +112,6 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
         if (this.isStopped()){
             this.anims.stop()
         }
-
-       
-
-        if ( Phaser.Input.Keyboard.JustDown(this.space)){
-    
-            this.x = this.getRndInteger(20, 500)
-            this.y = this.getRndInteger(20, 500)
-        }
    
     
     }

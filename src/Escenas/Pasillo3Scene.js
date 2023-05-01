@@ -119,7 +119,7 @@ export default class Pasillo3Scene extends Phaser.Scene {
 				this.contador++;
 			}
 			else if (!this.dialogos.visible)
-				this.dialogos.addSimpleText("Igual deberia volver atras...")		
+				this.dialogos.addSimpleText("Igual debería volver atras...")		
         }
 
 		if(!this.player.isStopped() && this.dialogos.dialog != "" && this.dialogos.visible){
