@@ -4326,11 +4326,11 @@
             {
              "0":
                 {
-                 "collides":true
+                 "collides":false
                 },
              "1":
                 {
-                 "collides":true
+                 "collides":false
                 },
              "10":
                 {
