@@ -4326,11 +4326,11 @@
             {
              "0":
                 {
-                 "collides":false
+                 "collides":true
                 },
              "1":
                 {
-                 "collides":false
+                 "collides":true
                 },
              "10":
                 {
@@ -4754,7 +4754,7 @@
                 },
              "25":
                 {
-                 "collides":false
+                 "collides":true
                 },
              "250":
                 {
@@ -4798,7 +4798,7 @@
                 },
              "26":
                 {
-                 "collides":false
+                 "collides":true
                 },
              "260":
                 {
@@ -5290,7 +5290,7 @@
                 },
              "76":
                 {
-                 "collides":false
+                 "collides":true
                 },
              "77":
                 {
