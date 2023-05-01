@@ -32,8 +32,8 @@ export default class PreLaberinto extends Phaser.Scene {
 		this.load.tilemapTiledJSON('mapPreLab','assets/Tilemaps/prelaberinto.json');
 		this.load.spritesheet("player", "assets/player/player.png", {frameWidth: 16, frameHeight:24});
 		this.load.image("vision", "assets/backgrounds/vision.png")
-		this.load.image("furniturePRELAB", "assets/Tilesets/Furniture Pack/Sheets/furniture-24x24-5x4-sheet.png")
-		this.load.image("altaresPRELAB", "assets/Tilesets/Furniture Pack/Sheets/shrines-altars-24x24-5x4-sheet.png")
+		this.load.image("furniture", "assets/Tilesets/Furniture Pack/Sheets/furniture-24x24-5x4-sheet.png")
+		this.load.image("altares", "assets/Tilesets/Furniture Pack/Sheets/shrines-altars-24x24-5x4-sheet.png")
 		//this.load.image("ventana", "assets/Tilesets/ventana.png")
 		this.load.image("halloween", "assets/Tilesets/11_Halloween_16x16.png")
 		
@@ -46,8 +46,8 @@ export default class PreLaberinto extends Phaser.Scene {
 		
 		const tileset = mapPreLab.addTilesetImage("paredes","tiles");
 		const tileset2 = mapPreLab.addTilesetImage("muebles","props");
-		const tilesetFurniture = mapPreLab.addTilesetImage("furniture-24x24-5x4-sheet", "furniturePRELAB");
-		const tilesetAltares = mapPreLab.addTilesetImage("shrines-altars-24x24-5x4-sheet", "altaresPRELAB");
+		const tilesetFurniture = mapPreLab.addTilesetImage("furniture-24x24-5x4-sheet", "furniture");
+		const tilesetAltares = mapPreLab.addTilesetImage("shrines-altars-24x24-5x4-sheet", "altares");
 		//const tilesetVentana = mapPreLab.addTilesetImage("ventana", "ventana");
 		const tilesetAlfombras = mapPreLab.addTilesetImage("alfombras","alfombras");
 		const tilesetHalloween = mapPreLab.addTilesetImage("halloween","halloween");

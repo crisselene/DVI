@@ -24,27 +24,13 @@ export default class Fantasma extends Phaser.Physics.Arcade.Sprite{
         
         this.scene.add.particles("p")
 
-        this.scene.anims.create({
-			key: 'bajarFantasma',
-			frames: scene.anims.generateFrameNumbers('fantasma', {start:23, end:31}),
-			frameRate: 5,
-			repeat: 0
-		});
+
         this.scene.anims.create({
 			key: 'subirFantasma',
 			frames: scene.anims.generateFrameNumbers('fantasma', {start:0, end:3}),
 			frameRate: 10,
 			repeat: 0
 		});
-		this.scene.anims.create({
-			key: 'runFantasma',
-			frames: scene.anims.generateFrameNumbers('fantasma', {start:5, end:13}),
-			frameRate: 10,
-			repeat: 0
-		});
-        
-
-
         
         this.setScale(2,2);
  

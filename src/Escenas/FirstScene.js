@@ -114,7 +114,7 @@ export default class FirstScene extends Phaser.Scene {
 
 
 			if (v1.distance(v2) < 18)
-				this.scene.start("PreLaberinto")
+				this.scene.start('PreLaberinto', {muerto:false});
 		})
 	
 	
