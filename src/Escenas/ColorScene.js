@@ -10,7 +10,7 @@ export default class ColorScene extends Phaser.Scene{
     preload(){
         this.load.image("tiles", "assets/Tilesets/Tiles.png");
 		this.load.image("props", "assets/Tilesets/Props.png");
-        this.load.tilemapTiledJSON('map1','assets/Tilemaps/pruebaColores.json');
+        this.load.tilemapTiledJSON('pruebaColores','assets/Tilemaps/pruebaColores.json');
 		this.load.spritesheet("player", "assets/player/player.png", {frameWidth: 16, frameHeight:24});
         this.load.image("square", "assets/Tilesets/TextureSquare.png")
 
@@ -27,7 +27,7 @@ export default class ColorScene extends Phaser.Scene{
 
     create(){
 
-        this.map = this.make.tilemap({key: "map1", tileWidth: 24, tileHeight:24 });
+        this.map = this.make.tilemap({key: "pruebaColores", tileWidth: 24, tileHeight:24 });
         this.tileset = this.map.addTilesetImage("paredes","tiles");
             
 
