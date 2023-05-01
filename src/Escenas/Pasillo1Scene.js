@@ -102,7 +102,7 @@ export default class Pasillo1Scene extends Phaser.Scene {
 		//Añade un dialogo al inicio de una escena
 		//Es necesario porque si no la camara todavia no sigue al player y no muestra el dialogo en la posicion correcta
 		this.cameras.main.once("followupdate", ()=>{				
-			this.dialogos.addSimpleText("Me han dado las llaves de la habitacion 510. Deberia buscarla...", true)
+			this.dialogos.addSimpleText("Me han dado las llaves de la habitación 510. Debería buscarla...", true)
 		}, {once: true})
 		
 		

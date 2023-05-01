@@ -69,7 +69,7 @@ export default class menuScene extends Phaser.Scene {
 		this.play_boton.on('pointerup', (pointer) =>{
 			this.music.stop();
 			this.door.stop();
-            this.scene.start('PreLaberinto', {muerto:false});
+            this.scene.start('Pasillo1Scene');
 
         }, this);
 
