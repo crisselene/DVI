@@ -118,7 +118,7 @@ export default class Pasillo4Scene extends Phaser.Scene {
 		if (Number(this.player.x.toPrecision(3)) >= 300){
 			
 			if(!this.dialogos.visible && !this.dialogoFin){
-				this.dialogos.addSimpleText("Que mal rollo!!")
+				this.dialogos.addSimpleText("¡Qué mal rollo! Esta puerta no estaba aquí....")
 				this.dialogoFin = true
 			}		
         }
